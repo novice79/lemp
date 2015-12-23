@@ -31,7 +31,7 @@ RUN add-apt-repository -y ppa:ondrej/php-7.0
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 RUN mkdir /docker-entrypoint-initdb.d
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb [arch=amd64,i386] http://mirrors.hustunique.com/mariadb/repo/10.1/ubuntu trusty main'
+RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main'
 ENV MARIADB_MAJOR 10.1
 RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password password 'freego'; \
