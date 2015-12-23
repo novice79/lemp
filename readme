@@ -1,0 +1,2 @@
+docker build -t novice/test .
+docker run -p 222:22 -p 80:80 -d --name fg -t novice/test
