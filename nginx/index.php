@@ -5,7 +5,7 @@
 <title>LEMP in docker test</title> 
 <style> 
 	body{ text-align:center} 
-	.div{ margin:0 auto; width:400px; height:25px; border:1px solid #F00} 
+	.div{ margin:0 auto; width:600px; height:20px; border:1px solid #F00} 
 </style> 
 </head> 
 <body> 
