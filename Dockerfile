@@ -48,12 +48,13 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 	
 # mariadb end
-RUN mysqld &
-RUN mysql -uroot -pfreego -e "CREATE USER 'david'@'localhost' IDENTIFIED BY 'freego';"
-RUN mysql -uroot -pfreego -e "CREATE USER 'david'@'%' IDENTIFIED BY 'freego';"
-RUN mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'localhost';"
-RUN mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'%';"
-RUN mysql -uroot -pfreego -e "FLUSH PRIVILEGES;"
+RUN /bin/bash -c "/usr/bin/mysqld &" && \
+    sleep 5 && \
+    mysql -uroot -pfreego -e "CREATE USER 'david'@'localhost' IDENTIFIED BY 'freego';" && \
+    mysql -uroot -pfreego -e "CREATE USER 'david'@'%' IDENTIFIED BY 'freego';" && \
+    mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'localhost';" && \
+    mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'%';" && \
+    mysql -uroot -pfreego -e "FLUSH PRIVILEGES;"
 
 COPY nginx/index.php /var/www/index.php
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
