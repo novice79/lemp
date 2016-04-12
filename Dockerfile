@@ -9,7 +9,9 @@ ENV LANG       en_US.UTF-8
 ENV LC_ALL	   "en_US.UTF-8"
 ENV LANGUAGE   en_US:en
 
-RUN apt-get update && apt-get install -y openssh-server software-properties-common python-software-properties supervisor language-pack-en-base nano
+RUN apt-get update && apt-get install -y openssh-server \
+    software-properties-common python-software-properties supervisor language-pack-en-base \
+    nano curl git vim emacs
 
 RUN mkdir -p /var/run/sshd /var/log/supervisor /var/log/nginx /run/php 
 
@@ -46,6 +48,11 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 	
 # mariadb end
+RUN mysql -uroot -pfreego -e "CREATE USER 'david'@'localhost' IDENTIFIED BY 'freego';"
+RUN mysql -uroot -pfreego -e "CREATE USER 'david'@'%' IDENTIFIED BY 'freego';"
+RUN mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'localhost';"
+RUN mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'%';"
+RUN mysql -uroot -pfreego -e "FLUSH PRIVILEGES;"
 
 COPY nginx/index.php /var/www/index.php
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
