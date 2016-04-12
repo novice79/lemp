@@ -28,7 +28,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN printf '%s\n%s\n' "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" "deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx" >> /etc/apt/sources.list
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
 # php7
-RUN add-apt-repository -y ppa:ondrej/php-7.0
+RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 # mariadb begin
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 RUN mkdir /docker-entrypoint-initdb.d
