@@ -10,7 +10,7 @@
 </head> 
 <body> 
 	<div class="div"> 
-		<?php echo "This is docker lemp(ubuntu14.04 + nginx1.9.9 + php7 + mariadb10.1) env" ?>
+		<?php echo "This is docker lemp(ubuntu14.04 + nginx1.9.15 + php7.05 + mariadb10.2) env" ?>
 	</div> 
 	<br>
 	<?php echo phpinfo(); ?>
