@@ -40,7 +40,7 @@ RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password_again password 'freego'; \
 	} | debconf-set-selections \
 	&& apt-get update && apt-get install -y nginx php7.0-cli php7.0-common php7.0 php7.0-mysql php7.0-fpm php7.0-curl php7.0-gd \
-    && mariadb-server rsync lsof\
+                 mariadb-server rsync lsof\
 	&& rm -rf /var/lib/apt/lists/* 
 
 COPY my.cnf /etc/mysql/my.cnf
