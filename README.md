@@ -23,7 +23,7 @@ n_3$ docker run -d -p 222:22 -p 80:80 -p 3306:3306 -p 4567:4567 -p 4444:4444 -p 
 --name n_3 -t novice/lemp 
 --wsrep-cluster-address=gcomm://10.10.10.10 --wsrep-node-address=10.10.10.12
 
-n_1$ docker exec -t n_1 mysql -e 'show status like "wsrep_cluster_size"'
+n_1$ docker exec -t n_1 mysql -uroot -pfreego -e 'show status like "wsrep_cluster_size"'
 +--------------------+-------+
 | Variable_name      | Value |
 +--------------------+-------+
