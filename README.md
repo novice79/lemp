@@ -11,11 +11,3 @@ $ssh root@$(docker-machine ip default) -p 222
 root@192.168.99.100's password:freego
 root@1d0f67e86996:~# 
 
-
-# RUN mysqld &  \
-#     && sleep 5 \
-#     && mysql -uroot -pfreego -e "CREATE USER 'david'@'localhost' IDENTIFIED BY 'freego';"  \
-#     && mysql -uroot -pfreego -e "CREATE USER 'david'@'%' IDENTIFIED BY 'freego';"  \
-#     && mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'localhost';"  \
-#     && mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'%';"  \
-#     && mysql -uroot -pfreego -e "FLUSH PRIVILEGES;"

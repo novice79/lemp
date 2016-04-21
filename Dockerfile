@@ -31,7 +31,7 @@ RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 # mariadb begin
 RUN groupadd -r mysql && useradd -r -g mysql mysql
-RUN mkdir /docker-entrypoint-initdb.d
+#RUN mkdir /docker-entrypoint-initdb.d
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu trusty main'
 ENV MARIADB_MAJOR 10.2
@@ -39,13 +39,11 @@ RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password password 'freego'; \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password_again password 'freego'; \
 	} | debconf-set-selections \
-	&& apt-get update && apt-get install -y nginx php7.0-cli php7.0-common php7.0 php7.0-mysql php7.0-fpm php7.0-curl php7.0-gd mariadb-server \
+	&& apt-get update && apt-get install -y nginx php7.0-cli php7.0-common php7.0 php7.0-mysql php7.0-fpm php7.0-curl php7.0-gd \
+    && mariadb-server rsync lsof\
 	&& rm -rf /var/lib/apt/lists/* 
-# comment out a few problematic configuration values
-# don't reverse lookup hostnames, they are usually another container
-RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
-	&& echo 'skip-host-cache\nskip-name-resolve' | awk '{ print } $1 == "[mysqld]" && c == 0 { c = 1; system("cat") }' /etc/mysql/my.cnf > /tmp/my.cnf \
-	&& mv /tmp/my.cnf /etc/mysql/my.cnf
+
+COPY my.cnf /etc/mysql/my.cnf
 	
 # mariadb end
 
@@ -60,9 +58,7 @@ RUN chown -R www-data:www-data /var/www
 
 VOLUME ["/var/cache/nginx", "/var/lib/mysql"]
 
-COPY init_mdb.sh /
-ENTRYPOINT ["/init_mdb.sh"]
-
+COPY init.sh /
 EXPOSE 22 80 443 3306
 
-CMD ["/usr/bin/supervisord"]
+ENTRYPOINT ["/init.sh"]
