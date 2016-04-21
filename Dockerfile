@@ -11,7 +11,7 @@ ENV LANGUAGE   en_US:en
 
 RUN apt-get update && apt-get install -y openssh-server \
     software-properties-common python-software-properties supervisor language-pack-en-base \
-    nano curl git vim emacs
+    curl git vim 
 
 RUN mkdir -p /var/run/sshd /var/log/supervisor /var/log/nginx /run/php 
 
@@ -33,8 +33,8 @@ RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 RUN mkdir /docker-entrypoint-initdb.d
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main'
-ENV MARIADB_MAJOR 10.1
+RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu trusty main'
+ENV MARIADB_MAJOR 10.2
 RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password password 'freego'; \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password_again password 'freego'; \
@@ -48,13 +48,6 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/my.cnf \
 	&& mv /tmp/my.cnf /etc/mysql/my.cnf
 	
 # mariadb end
-# RUN mysqld &  \
-#     && sleep 5 \
-#     && mysql -uroot -pfreego -e "CREATE USER 'david'@'localhost' IDENTIFIED BY 'freego';"  \
-#     && mysql -uroot -pfreego -e "CREATE USER 'david'@'%' IDENTIFIED BY 'freego';"  \
-#     && mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'localhost';"  \
-#     && mysql -uroot -pfreego -e "GRANT ALL ON *.* TO 'david'@'%';"  \
-#     && mysql -uroot -pfreego -e "FLUSH PRIVILEGES;"
 
 COPY nginx/index.php /var/www/index.php
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
