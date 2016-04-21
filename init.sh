@@ -69,4 +69,4 @@ echo "A failed upgrade is ok when there was no upgrade"
 # mysql_upgrade || true
 echo "$@" >> /etc/supervisor/conf.d/supervisord.conf
 #exec "$@"
-exec /usr/bin/supervisord
+exec /usr/bin/supervisord --nodaemon
