@@ -3,6 +3,8 @@ for docker lemp galera test
 # build locally
 docker build -t novice/lemp .
 # run it like this
+referrence and modified from:
+http://galeracluster.com/2015/05/getting-started-galera-with-docker-part-2-2/
 suppose following 3 nodes
 n_1 10.10.10.10
 n_2 10.10.10.11
