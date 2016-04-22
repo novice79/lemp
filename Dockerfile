@@ -11,7 +11,7 @@ ENV LANGUAGE   en_US:en
 
 RUN apt-get update && apt-get install -y openssh-server \
     software-properties-common python-software-properties supervisor language-pack-en-base \
-    curl git vim 
+    curl git vim nfs-kernel-server nfs-common
 
 RUN mkdir -p /var/run/sshd /var/log/supervisor /var/log/nginx /run/php 
 
@@ -22,7 +22,8 @@ RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/ss
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
+RUN echo "export VISIBLE=now" >> /etc/profile \
+    && echo "/var/www *(rw,async,no_subtree_check,insecure)" >> /etc/exports
 
 # nginx
 RUN printf '%s\n%s\n' "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" "deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx" >> /etc/apt/sources.list
@@ -56,7 +57,7 @@ COPY nginx/freego.key /etc/ssl/freego.key
 
 RUN chown -R www-data:www-data /var/www
 
-VOLUME ["/var/cache/nginx", "/var/lib/mysql"]
+VOLUME ["/var/www", "/var/lib/mysql"]
 
 COPY init.sh /
 EXPOSE 22 80 443 3306
