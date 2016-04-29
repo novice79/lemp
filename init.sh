@@ -67,6 +67,13 @@ chown -R mysql:mysql /var/run/mysqld
 echo "Checking to upgrade the schema"
 echo "A failed upgrade is ok when there was no upgrade"
 # mysql_upgrade || true
-echo "$@" >> /etc/supervisor/conf.d/supervisord.conf
+if grep -q "mysqld" /etc/supervisor/conf.d/supervisord.conf 
+then
+  echo "already in place, skip it..."
+else
+  echo "place mysqld in supervisord.conf ..."
+  echo "$@" >> /etc/supervisor/conf.d/supervisord.conf
+fi
+
 #exec "$@"
 exec /usr/bin/supervisord --nodaemon
