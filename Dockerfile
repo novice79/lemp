@@ -24,7 +24,7 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile \
     && echo "/var/www *(rw,async,no_subtree_check,insecure)" >> /etc/exports \
-    && echo -e "\nexport TERM=xterm" >> ~/.bashrc
+    && echo "export TERM=xterm" >> ~/.bashrc
 
 # nginx
 RUN printf '%s\n%s\n' "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" "deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx" >> /etc/apt/sources.list
