@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:14.04
 MAINTAINER David <david@cninone.com>
 
 # Get noninteractive frontend for Debian to avoid some problems:
@@ -35,8 +35,8 @@ RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 #RUN mkdir /docker-entrypoint-initdb.d
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main'
-ENV MARIADB_MAJOR 10.1
+RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu trusty main'
+ENV MARIADB_MAJOR 10.2
 RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password password 'freego'; \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password_again password 'freego'; \
