@@ -25,7 +25,8 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile \
     && echo "/var/www *(rw,async,no_subtree_check,insecure)" >> /etc/exports \
     && echo "export TERM=xterm" >> ~/.bashrc
-
+ENV TZ=Asia/Chongqing
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # nginx
 RUN printf '%s\n%s\n' "deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx" "deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx" >> /etc/apt/sources.list
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
@@ -35,8 +36,8 @@ RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 #RUN mkdir /docker-entrypoint-initdb.d
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/ubuntu trusty main'
-ENV MARIADB_MAJOR 10.2
+RUN add-apt-repository 'deb [arch=amd64,i386] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.1/ubuntu trusty main'
+ENV MARIADB_MAJOR 10.1
 RUN { \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password password 'freego'; \
 		echo mariadb-server-$MARIADB_MAJOR mysql-server/root_password_again password 'freego'; \
