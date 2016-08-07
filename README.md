@@ -12,6 +12,7 @@ n3 10.10.10.12
 A simple cluster setup would look like this:
 
 n1$ docker run -p 222:22 -p 80:80 -p 3306:3306 -p 4567:4567 -p 4444:4444 -p 4568:4568 -d \
+-v "$PWD/cron_task":/etc/cron.d/ \
 -v /my_php_site_src_path:/var/www:rw \
 -v /my/own/datadir:/var/lib/mysql  \
 --name n1 -t novice/lemp \
