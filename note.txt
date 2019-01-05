@@ -1,0 +1,5 @@
+docker build -t lemp .
+pkg -t node10-linux-x64 init.js
+
+git tag 1.0
+git push origin --tags
