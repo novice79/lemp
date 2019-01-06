@@ -111,13 +111,13 @@ fs.writeFileSync(sql_init_file, init_sql);
 })();
 (function start_php() {
     const start_dt = new Date().getTime();
-    const php = exec( `php-fpm -F` );
+    const php = exec( `php-fpm -F -O` );
     php.stdout.on('data', data => console.log(data));
     php.stderr.on('data', data => console.log(data));
     php.on('close', (code) => {
         console.log(`php-fpm exited with code ${code}`);
         const end_dt = new Date().getTime();
-        if (end_dt - start_dt > 3600 * 1000) {
+        if (end_dt - start_dt > 1000) {
             // restart php-fpm
             setTimeout(() => start_php(), 2000);
         }
