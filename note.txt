@@ -4,6 +4,10 @@ pkg -t node10-linux-x64 init.js
 git tag 1.0
 git push origin --tags
 
+//push all branchs
+git push --all origin -u
+git push --all
+
 docker run -p 10080:80 -p 3306:3306 -p 33060:33060 -d \
 --name lemp -t lemp 
 
