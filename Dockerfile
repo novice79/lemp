@@ -26,7 +26,7 @@ COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 RUN rm -rf /var/log/nginx/* ; mkdir -p /var/www /run/php && chown -R www-data:www-data /var/www /var/log/nginx && ln -sf /usr/sbin/php-fpm7.3 /usr/sbin/php-fpm ; \
 	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf
 	
-VOLUME ["/var/www", "/var/lib/mysql"]
+VOLUME ["/var/www"]
 
 EXPOSE 80 
 
