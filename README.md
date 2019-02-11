@@ -9,7 +9,7 @@ and with additional mysql user:
 name: david
 pass: freego
 or you can change root password by set it in MYSQL_ROOT_PASSWORD env
-or add another user and database by supply MYSQL_USER MYSQL_PASSWORD MYSQL_DATABASE environment vriables
+or add another user and database by supply MYSQL_USER MYSQL_PASSWORD MYSQL_DATABASE environment variables
 
 for example, run container with root password=aaa, with another mysql user(name:aaa_user;password:aaa_pass), with additional database(aaa_db):
 docker run -p 80:80 -p 3306:3306 -p 33060:33060 -d \
