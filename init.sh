@@ -29,6 +29,7 @@ then
 </html> 
 EOT
 elif [ -f "/var/www/public/index.php" ]
+then
     sed 's@/var/www@/var/www/public@g' -i /etc/nginx/conf.d/default.conf
 else
     echo "normal php www dir containing files, skip"
