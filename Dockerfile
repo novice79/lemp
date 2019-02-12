@@ -27,7 +27,7 @@ RUN rm -rf /var/log/nginx/* ; mkdir -p /var/www /run/php && chown -R www-data:ww
 	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf
 	
 VOLUME ["/var/www"]
-
+WORKDIR /var/www
 EXPOSE 80 
 
 COPY init.sh /
