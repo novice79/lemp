@@ -30,6 +30,6 @@ VOLUME ["/var/www"]
 
 EXPOSE 80 
 
-COPY init /
+COPY init.sh /
 
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/init.sh"]

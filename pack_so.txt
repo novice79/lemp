@@ -1,0 +1,46 @@
+readelf -d `which php`
+ldd `which php`
+objdump -p `which php` | grep NEEDED
+
+readelf -d `which php`| grep 'NEEDED'
+
+tar czf /tmp/xvfb/Xvfb.tar.gz $(ldd /usr/bin/Xvfb | grep '/usr/lib64/' | cut -d '=' -f1 | awk '{print $1}' | while read IN; do OUT=`readlink $IN`; cp -rf $OUT /tmp/xvfb/$IN; echo /tmp/xvfb/$IN; done)
+
+ldd file | grep "=> /" | awk '{print $3}' | xargs -I '{}' cp -v '{}' /destination
+
+ldd `which php` | grep "=> /" | awk '{print $3}' | xargs -I '{}' echo '{}'
+
+docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm
+
+find /usr/local/ -type f -perm /a+x -exec ldd {} \; \
+| grep so \
+| sed -e '/^[^\t]/ d' \
+| sed -e 's/\t//' \
+| sed -e 's/.*=..//' \
+| sed -e 's/ (0.*)//' \
+| sort \
+| uniq -c \
+| sort -n
+
+// my version:
+find /usr/local/ -type f -perm /a+x -exec ldd {} \; \
+| grep "=> /" \
+| awk '{print $3}' \
+| sort \
+| uniq \
+| xargs -I '{}' cp --parents {} .
+
+List the Contents of tar File
+tar -tvf archive.tar.
+tar --list --verbose --file=archive.tar.
+tar -ztvf archive.tar.gz.
+tar --gzip --list --verbose --file=archive.tar.
+tar -jtvf archive.tar.bz2.
+tar --bzip2 --list --verbose --file=archive.tar.
+
+find /usr/local/ -type f -perm /a+x -exec ldd {} \; \
+| grep "=> /" \
+| awk '{print $3}' \
+| sort \
+| uniq \
+| xargs -I '{}' echo '{}'

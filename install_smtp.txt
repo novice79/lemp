@@ -1,0 +1,35 @@
+docker run -it --rm -h ub18 --name ub ubuntu bash
+apt update && apt upgrade -y ; apt install ssmtp -y
+apt install vim -y
+
+vi /etc/ssmtp/ssmtp.conf
+# hostname=ub18
+UseSTARTTLS=YES
+dws-docker-mgr=cdthd@cninone.com
+mailhub=smtp.exmail.qq.com:587
+AuthUser=cdthd@cninone.com
+AuthPass=Changde1110
+
+vi /etc/ssmtp/revaliases
+dws-docker-mgr:cdthd@cninone.com:smtp.exmail.qq.com:587
+
+echo "Subject: hello" | sendmail -v david@cninone.com < mail.txt
+
+cat mail.txt
+Cc: wei-jiang@163.com
+Subject: This is an HTML email
+From: developer@example.com
+Content-Type: text/html; charset="utf8"
+
+
+html>
+<body>
+<div style="
+        background-color:
+        #abcdef; width: 300px;
+        height: 300px;
+        ">
+</div>
+You can add any valid email HTML here.
+</body>
+</html>
