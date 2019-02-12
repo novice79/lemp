@@ -36,6 +36,6 @@ VOLUME ["/var/www", "/var/lib/mysql"]
 
 EXPOSE 80 3306 33060
 
-COPY init /
+COPY init.sh /
 
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/init.sh"]
