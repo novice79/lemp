@@ -5,7 +5,6 @@ if [ -z "$(ls /var/www)" ]
 then
     echo "empty www directory, create index.php"
     nginx_v=`nginx -v 2>&1`
-    mysql_v=`mysql -V`
     cat <<EOT > /var/www/index.php
 <!DOCTYPE html> 
 <html> 
@@ -21,7 +20,6 @@ then
     lemp versions:
     <div class="version">    
     ${nginx_v}<br>
-    ${mysql_v}<br>
     </div> 
     <br>
     <?php echo phpinfo(); ?>
