@@ -28,7 +28,7 @@ docker run -p 10080:80 -p 3306:3306 -p 33060:33060 -d \
 --name lemp -t novice/lemp
 
 # novice/lemp:lumen (nginx+php-fpm+mysql with composer+lumen(5.7.7) demo)
-Usage: like above
+Usage: like above(need to change tag to novice/lemp:lumen of course)
 but if mounted "php_src" dir is empty, it will automaticlly create a runnable lumen project here
 
 # novice/lemp:thin (nginx+php-fpm tow in one)
