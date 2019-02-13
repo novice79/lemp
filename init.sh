@@ -1,4 +1,12 @@
 #!/bin/bash
+
+log () {
+    printf "[%(%Y-%m-%d %T)T] %s\n" -1 "$*"
+}
+echo () {
+    log "$@"
+}
+
 chown -R mysql:mysql /var/lib/mysql
 if [ ! -e /var/lib/mysql/mysql ]; then
     rm -rf /var/lib/mysql/*
