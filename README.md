@@ -45,7 +45,7 @@ but if mounted "php_src" dir is empty, it will automaticlly create a runnable lu
 just open browser to http://host-ip:10080 to see it,   
 and change generated code in "php_src" to startup
 
-## novice/lemp:wp (lemp with wordpress(5.0.3)  )
+## novice/lemp:wp (lemp with wordpress(chinese version 5.0.3)  )
 Usage:  
 like above(need to change tag to novice/lemp:wp of course)  
 
