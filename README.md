@@ -35,6 +35,8 @@ with additional database = aaa_db
     -v $PWD/mysql:/var/lib/mysql  \
     --name lemp -t novice/lemp
 
+And you can overwite **nginx config file** by add:
+>-v host_dir/mysite.conf:/etc/nginx/conf.d/default.conf
 ## novice/lemp:lumen (above with composer+lumen(5.7.7) skeleton )
 Usage:  
 like above(need to change tag to novice/lemp:lumen of course)  
