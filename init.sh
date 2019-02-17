@@ -34,8 +34,8 @@ then
   echo "empty www directory, create lumen demo"
   cp -a /lumen/. /var/www/
   sed -i -E "s/^DB_DATABASE=[[:alnum:]]+$/DB_DATABASE=$MYSQL_DATABASE/" /var/www/.env
-  sed -i -E "s/^DB_USERNAME=[[:alnum:]]+$/DB_DATABASE=$MYSQL_USER/" /var/www/.env
-  sed -i -E "s/^DB_PASSWORD=[[:alnum:]]+$/DB_DATABASE=$MYSQL_PASSWORD/" /var/www/.env
+  sed -i -E "s/^DB_USERNAME=[[:alnum:]]+$/DB_USERNAME=$MYSQL_USER/" /var/www/.env
+  sed -i -E "s/^DB_PASSWORD=[[:alnum:]]+$/DB_PASSWORD=$MYSQL_PASSWORD/" /var/www/.env
   APP_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
   sed -i -E "s/^APP_KEY=[[:alnum:]]*$/APP_KEY=$APP_KEY/" /var/www/.env
 else
