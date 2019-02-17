@@ -29,7 +29,8 @@ COPY conf/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir /var/www /run/php && chown -R www-data:www-data /var/www && ln -sf /usr/sbin/php-fpm7.3 /usr/sbin/php-fpm ; \
-	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf 
+	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf ; \
+	sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 
 # can not modify /etc/hosts here 
 VOLUME ["/var/www", "/var/lib/mysql"]
