@@ -2,7 +2,7 @@
 In a workspace dir  
 >mkdir php_src mysql  
 
-and run:
+and then run:
 
     docker run -p 10080:80 -p 3306:3306 -p 33060:33060 -d \
     -v $PWD/php_src:/var/www:rw \
@@ -35,6 +35,8 @@ with additional database = aaa_db
     -v $PWD/mysql:/var/lib/mysql  \
     --name lemp -t novice/lemp
 
+And you can overwite **nginx config file** by add:
+>-v host_dir/mysite.conf:/etc/nginx/conf.d/default.conf
 ## novice/lemp:lumen (above with composer+lumen(5.7.7) skeleton )
 Usage:  
 like above(need to change tag to novice/lemp:lumen of course)  
@@ -42,7 +44,7 @@ but if mounted "php_src" dir is empty, it will automaticlly create a runnable lu
 just open browser to http://host-ip:10080 to see it,   
 and change generated code in "php_src" to startup
 
-## novice/lemp:thin (nginx+php-fpm tow in one)
+## novice/lemp:thin (nginx+php-fpm *tow in one*)
 This need to connect to external db  
 
     docker run -p 10080:80 -d \
