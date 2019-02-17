@@ -25,38 +25,16 @@ apt-get update && apt-get install -y nginx nfs-common unzip \
 	; curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
 	&& chmod +x /usr/local/bin/composer
 
-composer create-project --prefer-dist laravel/lumen /lumen
+cd / && wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
+mkdir -p /wordpress/wp-content/languages
+wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
+rm -f *.{tar.gz,zip}
+mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
+sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
 
 mkdir /var/www ; chown -R www-data:www-data /var/www ; ln -sf /usr/sbin/php-fpm7.3 /usr/sbin/php-fpm ; \
 	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf ; \
 	sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 
-nginx_v=`nginx -v 2>&1`
-mysql_v=`mysql -V`
-env_info="/lumen/resources/views/info.php"
-cat <<EOT > $env_info
-<!DOCTYPE html> 
-<html> 
-<head> 
-<meta charset="utf-8" /> 
-<title>LEMP in docker test</title> 
-<style> 
-    body{ text-align:center} 
-    .version{ margin:0 auto; border:1px solid #F00} 
-</style> 
-</head> 
-<body> 
-    lemp versions:
-    <div class="version">    
-    <?php echo \$lumen_v; ?><br>
-    ${nginx_v}<br>
-    ${mysql_v}<br>
-    </div> 
-    <br>
-    <?php echo phpinfo(); ?>
-</body> 
-</html> 
-EOT
-sed -i 's/\($router->app->version()\)/view("info", ["lumen_v" => \1])/g' /lumen/routes/web.php
 
 rm -- "$0"

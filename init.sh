@@ -31,13 +31,15 @@ su mysql -c '/usr/sbin/mysqld --init-file="${sql_init_file}" --server-id=1 --log
 # ignore hidden files
 if [ -z "$(ls /var/www)" ]
 then
-  echo "empty www directory, create lumen demo"
-  cp -a /lumen/. /var/www/
-  sed -i -E "s/^DB_DATABASE=[[:alnum:]]+$/DB_DATABASE=$MYSQL_DATABASE/" /var/www/.env
-  sed -i -E "s/^DB_USERNAME=[[:alnum:]]+$/DB_DATABASE=$MYSQL_USER/" /var/www/.env
-  sed -i -E "s/^DB_PASSWORD=[[:alnum:]]+$/DB_DATABASE=$MYSQL_PASSWORD/" /var/www/.env
-  APP_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-  sed -i -E "s/^APP_KEY=[[:alnum:]]*$/APP_KEY=$APP_KEY/" /var/www/.env
+    echo "empty www directory, create wordpress site"
+    cp -a /wordpress/. /var/www/
+    sed -i "s/database_name_here/$MYSQL_DATABASE/" /var/www/wp-config.php
+    sed -i "s/username_here/$MYSQL_USER/" /var/www/wp-config.php
+    sed -i "s/password_here/$MYSQL_PASSWORD/" /var/www/wp-config.php
+    for i in {1..8}; do 
+        APP_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+        sed -i "0,/put your unique phrase here/ s//$APP_KEY/" /var/www/wp-config.php
+    done
 else
   echo "contains files, skip"
 fi
