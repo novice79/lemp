@@ -28,7 +28,8 @@ apt-get update && apt-get install -y nginx nfs-common unzip \
 composer create-project --prefer-dist laravel/lumen /lumen
 
 mkdir /var/www ; chown -R www-data:www-data /var/www ; ln -sf /usr/sbin/php-fpm7.3 /usr/sbin/php-fpm ; \
-	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf 
+	sed 's@^listen = /run.*$@listen = 127.0.0.1:9000@g' -i /etc/php/7.3/fpm/pool.d/www.conf ; \
+	sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 
 nginx_v=`nginx -v 2>&1`
 mysql_v=`mysql -V`
