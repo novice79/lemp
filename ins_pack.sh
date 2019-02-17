@@ -25,9 +25,11 @@ apt-get update && apt-get install -y nginx nfs-common unzip \
 	; curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
 	&& chmod +x /usr/local/bin/composer
 
-cd / && wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
-mkdir -p /wordpress/wp-content/languages
-wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
+cd / 
+# wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
+# mkdir -p /wordpress/wp-content/languages
+# wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
+wget https://cn.wordpress.org/wordpress-5.0.3-zh_CN.tar.gz && tar zxf *.tar.gz
 rm -f *.{tar.gz,zip}
 mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
