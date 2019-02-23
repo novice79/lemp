@@ -49,7 +49,7 @@ and change generated code in "php_src" to startup
 Usage:  
 like above(need to change tag to novice/lemp:wp of course)  
 
-## novice/lemp:ols (OpenLitespeed1.4.44 + php7.3.2 + mariadb10.3.13 )
+## novice/lemp:ols (OpenLiteSpeed1.4.44 + php7.3.2 + mariadb10.3.13 )
 Usage:  
 In a workspace dir  
 >mkdir php_src mysql  
