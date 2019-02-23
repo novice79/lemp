@@ -37,16 +37,14 @@ while [ 1 ]
 do
     sleep 2
     SERVICE="lshttpd"
-    if [ ! pidof "$SERVICE" >/dev/null ]
-    then
+    if ! pidof "$SERVICE" >/dev/null; then
         echo "$SERVICE stopped. restart it"
         /usr/local/lsws/bin/lshttpd
     fi
 
     SERVICE="mysqld"
-    if [ ! pidof "$SERVICE" >/dev/null ]
-    then
+    if ! pidof "$SERVICE" >/dev/null; then
         echo "$SERVICE stopped. restart it"
-        mysqld --init-file="${sql_init_file}" --user=root &
+        mysqld_safe --init-file="${sql_init_file}" &
     fi
 done
