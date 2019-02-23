@@ -38,7 +38,7 @@ echo "$LS_USER:$ENCRYPT_PASS" > $CUR_DIR/../conf/htpasswd
 if [ $? -eq 0 ]; then
 	echo "OpenLiteSpeed administrator's username/password is updated successfully!"
 fi
-
+# /usr/local/lsws/lsphp73/bin/lsphp	
 mysqld --init-file="${sql_init_file}" --user=root &
 /usr/local/lsws/bin/lshttpd
 

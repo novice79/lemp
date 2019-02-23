@@ -61,7 +61,14 @@ and then run:
     -v $PWD/mysql:/var/lib/mysql  \
     --name lemp -t novice/lemp:ols
 
-Default mysql account and change method just like above
+There are something you can change by define these env variables: 
+
+    MYSQL_ROOT_PASSWORD     --for mysql root password(default: freego) 
+    MYSQL_USER              --for another mysql user name(default: david)  
+    MYSQL_PASSWORD          --for another mysql user's password(default: freego)  
+    MYSQL_DATABASE          --for another db name(default: lemp)  
+    LS_USER                 --for OpenLiteSpeed admin username(default: david)  
+    LS_PASS                 --for OpenLiteSpeed admin password(default: freego)  
 
 ## novice/lemp:thin (nginx+php-fpm *tow in one*)
 This need to connect to external db  
