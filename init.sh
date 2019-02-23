@@ -19,7 +19,7 @@ echo "MYSQL_DATABASE=${MYSQL_DATABASE:=lemp}"
 cat <<EOT > $sql_init_file
 DELETE FROM mysql.user ;
 CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}' ;
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
+-- ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
 GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION;
 CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';
 GRANT ALL ON *.* TO '$MYSQL_USER'@'%';
@@ -29,11 +29,21 @@ CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
 FLUSH PRIVILEGES;
 EOT
 
+cd /usr/local/lsws/admin/misc
+echo "LS_USER=${LS_USER:=david}"
+echo "LS_PASS=${LS_PASS:=freego}"
+CUR_DIR=`pwd`
+ENCRYPT_PASS=`$CUR_DIR/../fcgi-bin/admin_php -q $CUR_DIR/htpasswd.php $LS_PASS`
+echo "$LS_USER:$ENCRYPT_PASS" > $CUR_DIR/../conf/htpasswd 
+if [ $? -eq 0 ]; then
+	echo "OpenLiteSpeed administrator's username/password is updated successfully!"
+fi
+
 mysqld --init-file="${sql_init_file}" --user=root &
 /usr/local/lsws/bin/lshttpd
 
 # no pgrep && ps
-while [ 1 ]
+while :
 do
     sleep 2
     SERVICE="lshttpd"

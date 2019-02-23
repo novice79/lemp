@@ -21,13 +21,5 @@ MARIADB_MAJOR="10.3"
 apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 rm -rf /var/lib/apt/lists/* 
 
-cd /usr/local/lsws/admin/misc
-ADMIN_USER="david"
-PASS_ONE="freego"
-ENCRYPT_PASS=`$CUR_DIR/../fcgi-bin/admin_php -q $CUR_DIR/htpasswd.php $PASS_ONE`
-echo "$ADMIN_USER:$ENCRYPT_PASS" > $CUR_DIR/../conf/htpasswd 
-if [ $? -eq 0 ]; then
-	echo "Administrator's username/password is updated successfully!"
-fi
 
 rm -- "$0"
