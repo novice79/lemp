@@ -44,15 +44,15 @@ mysqld --init-file="${sql_init_file}" --user=root &
 while :
 do
     sleep 2
-    SERVICE="lshttpd"
-    if ! pidof "$SERVICE" >/dev/null; then
-        log "$SERVICE stopped. restart it"
-        /usr/local/lsws/bin/lshttpd
-    fi
+    # SERVICE="lshttpd"
+    # if ! pidof "$SERVICE" >/dev/null; then
+    #     log "$SERVICE stopped. restart it"
+    #     /usr/local/lsws/bin/lshttpd
+    # fi
 
     SERVICE="mysqld"
     if ! pidof "$SERVICE" >/dev/null; then
         log "$SERVICE stopped. restart it"
-        mysqld_safe --init-file="${sql_init_file}" &
+        mysqld --init-file="${sql_init_file}" --user=root &
     fi
 done
