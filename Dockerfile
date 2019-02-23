@@ -1,17 +1,12 @@
-# base debian:stretch-slim
-FROM mysql:latest
+FROM debian:stretch-slim
 LABEL maintainer="David <david@cninone.com>"
 
 COPY ins_pack.sh /ins_pack.sh
 RUN /ins_pack.sh
-# need first install nginx, and then copy conf files
-COPY conf/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
 
-# can not modify /etc/hosts here 
 # VOLUME ["/var/www", "/var/lib/mysql"]
 WORKDIR /var/www
-EXPOSE 80 3306 33060
+EXPOSE 7080 8088 3306
 
 COPY init.sh /
 
