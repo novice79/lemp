@@ -49,6 +49,20 @@ and change generated code in "php_src" to startup
 Usage:  
 like above(need to change tag to novice/lemp:wp of course)  
 
+## novice/lemp:ols (OpenLitespeed1.4.44 + php7.3.2 + mariadb10.3.13 )
+Usage:  
+In a workspace dir  
+>mkdir php_src mysql  
+
+and then run:
+
+    docker run -p 10080:8088 -p 7080:7080 -p 3060:3060 -d \
+    -v $PWD/php_src:/usr/local/lsws/Example/html \
+    -v $PWD/mysql:/var/lib/mysql  \
+    --name lemp -t novice/lemp:ols
+
+Default mysql account and change method just like above
+
 ## novice/lemp:thin (nginx+php-fpm *tow in one*)
 This need to connect to external db  
 

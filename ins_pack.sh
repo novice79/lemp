@@ -18,8 +18,9 @@ MARIADB_MAJOR="10.3"
 } | debconf-set-selections \
 && apt-get update && apt-get install -y openlitespeed mariadb-server lsphp73* 
 
-# apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-# rm -rf /var/lib/apt/lists/* 
+apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+rm -rf /var/lib/apt/lists/* 
+
 cd /usr/local/lsws/admin/misc
 ADMIN_USER="david"
 PASS_ONE="freego"

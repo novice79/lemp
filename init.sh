@@ -8,7 +8,7 @@ echo () {
 chown -R mysql:mysql /var/lib/mysql
 if [ ! -e /var/lib/mysql/mysql ]; then
     rm -rf /var/lib/mysql/*
-    mysqld --initialize --user=mysql --datadir=/var/lib/mysql
+    mysql_install_db --datadir=/var/lib/mysql
 fi
 export sql_init_file='/tmp/mysql-init.sql'
 # get environment variables:
