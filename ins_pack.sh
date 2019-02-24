@@ -22,4 +22,5 @@ apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 rm -rf /var/lib/apt/lists/* 
 
 sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/Example/vhconf.conf
+sed -i '/ajax\.googleapis\.com/d' /usr/local/lsws/admin/html.open/view/inc/header.php
 rm -- "$0"

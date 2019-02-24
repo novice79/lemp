@@ -59,6 +59,7 @@ and then run:
     docker run -p 10080:8088 -p 7080:7080 -p 3060:3060 -d \
     -v $PWD/php_src:/usr/local/lsws/Example/html \
     -v $PWD/mysql:/var/lib/mysql  \
+    -v lsconf:/usr/local/lsws/conf \
     --name lemp -t novice/lemp:ols
 
 There are something you can change by define these env variables: 
@@ -69,7 +70,7 @@ There are something you can change by define these env variables:
     MYSQL_DATABASE          --for another db name(default: lemp)  
     LS_USER                 --for OpenLiteSpeed admin username(default: david)  
     LS_PASS                 --for OpenLiteSpeed admin password(default: freego)  
-
+ and if you want to retain litespeed config data between rm and rerun, remember mount named volume to '/usr/local/lsws/conf'
 ## novice/lemp:thin (nginx+php-fpm *tow in one*)
 This need to connect to external db  
 
