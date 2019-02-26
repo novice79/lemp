@@ -45,9 +45,26 @@ but if mounted "php_src" dir is empty, it will automaticlly create a runnable lu
 just open browser to http://host-ip:10080 to see it,   
 and change generated code in "php_src" to startup
 
-## novice/lemp:wp (lemp with wordpress(chinese version 5.0.3)  )
+## novice/lemp:wp (OpenLiteSpeed1.4.44 + Php7.3.2 + Mysql8.0.15 with wordpress  )
 Usage:  
-like above(need to change tag to novice/lemp:wp of course)  
+docker run -p 80:80 -p 443:443 -p 7080:7080 -p 3060:3060  -p 33060:33060 -d \
+    -v /data/php_src:/var/www \
+    -v mysql:/var/lib/mysql  \
+    -v lsconf:/usr/local/lsws/conf \
+    --name wp novice/lemp:wp
+
+There are something you can change by define these env variables: 
+
+    MYSQL_ROOT_PASSWORD     --for mysql root password(default: freego) 
+    MYSQL_USER              --for another mysql user name(default: david)  
+    MYSQL_PASSWORD          --for another mysql user's password(default: freego)  
+    MYSQL_DATABASE          --for another db name(default: lemp)  
+    LS_USER                 --for OpenLiteSpeed admin username(default: david)  
+    LS_PASS                 --for OpenLiteSpeed admin password(default: freego) 
+    SFTP_USER               --for sftp user name (default: david)  
+    SFTP_PASS               --for sftp password (default: freego) 
+
+if mounted "php_src" dir is empty, it will automaticlly create wordpress site
 
 ## novice/lemp:ols (OpenLiteSpeed1.4.44 + php7.3.2 + mariadb10.3.13 )
 Usage:  
