@@ -1,7 +1,23 @@
 #!/bin/bash
+DEBIAN_FRONTEND=noninteractive
 sed -i -E "s/^exit [0-9]+$/exit 0/" /usr/sbin/policy-rc.d
 apt-get update && apt-get install -y tzdata curl wget procps net-tools \
-	ca-certificates apt-transport-https 
+	ca-certificates apt-transport-https openssh-server
+
+sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+mkdir -p /var/run/sshd
+groupadd sftp
+sed -i -E 's@[^[:space:]g]+sftp-server@internal-sftp@' /etc/ssh/sshd_config
+cat <<EOT >> /etc/ssh/sshd_config
+Match Group sftp
+ForceCommand internal-sftp
+PasswordAuthentication yes
+ChrootDirectory /var
+PermitTunnel no
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+EOT
 TZ="Asia/Chongqing"
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone 
 
@@ -20,15 +36,18 @@ apt-get update && apt-get install -y nfs-common unzip \
 
 cd / 
 wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
-mkdir -p /wordpress/wp-content/languages
-wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
-# wget https://cn.wordpress.org/wordpress-5.0.3-zh_CN.tar.gz && tar zxf *.tar.gz
-rm -f *.{tar.gz,zip}
+
+rm -f *.{tar.gz}
 mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
-sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
+# sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
 
-mkdir /var/www ; chown -R www-data:www-data /var/www ;
+mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
-
+mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
+sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+sed -i 's@html/@@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+sed -i 's@Example@wordpress@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+sed -i '/ajax\.googleapis\.com/d' /usr/local/lsws/admin/html.open/view/inc/header.php
+rm -rf /usr/local/lsws/Example
 
 rm -- "$0"
