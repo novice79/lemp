@@ -38,11 +38,14 @@ apt-get update && apt-get install -y nfs-common unzip \
 
 cd / 
 wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
+# mkdir -p /wordpress/wp-content/languages
+# wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
 
-rm -f *.{tar.gz}
+rm -f *.{tar.gz,zip}
 mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
+
 # sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
-usermod -aG sftp nobody
+
 mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}

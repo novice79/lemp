@@ -48,7 +48,6 @@ then
     WP_CFG="/var/www/wordpress/wp-config.php"
     # cp -a /wordpress/. /var/www/
     cp -a /wordpress /var/www/
-    chmod -R g+w /var/www/wordpress
     sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
     sed -i "s/username_here/$MYSQL_USER/" $WP_CFG
     sed -i "s/password_here/$MYSQL_PASSWORD/" $WP_CFG
@@ -68,6 +67,8 @@ else
   log "wordpress already exist, skip"
 fi
 chown -R "${SFTP_USER}":sftp /var/www
+usermod -aG sftp nobody
+chmod -R g+w /var/www/wordpress
 /usr/sbin/sshd
 /usr/sbin/mysqld --init-file="${sql_init_file}" --user=root --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=true --log-slave-updates &
 /usr/local/lsws/bin/lshttpd
