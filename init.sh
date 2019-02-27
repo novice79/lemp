@@ -41,20 +41,30 @@ useradd -d /var/www "${SFTP_USER}" -g sftp
 echo "${SFTP_USER}:${SFTP_PASS}" | chpasswd
 
 # ignore hidden files
-if [ -z "$(ls /var/www)" ]
+# if [ -z "$(ls /var/www)" ]
+if [ ! -d "/var/www/wordpress" ]
 then
     log "empty www directory, create wordpress site"
+    WP_CFG="/var/www/wordpress/wp-config.php"
     # cp -a /wordpress/. /var/www/
     cp -a /wordpress /var/www/
-    sed -i "s/database_name_here/$MYSQL_DATABASE/" /var/www/wordpress/wp-config.php
-    sed -i "s/username_here/$MYSQL_USER/" /var/www/wordpress/wp-config.php
-    sed -i "s/password_here/$MYSQL_PASSWORD/" /var/www/wordpress/wp-config.php
+    sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
+    sed -i "s/username_here/$MYSQL_USER/" $WP_CFG
+    sed -i "s/password_here/$MYSQL_PASSWORD/" $WP_CFG
     for i in {1..8}; do 
         APP_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-        sed -i "0,/put your unique phrase here/ s//$APP_KEY/" /var/www/wordpress/wp-config.php
+        sed -i "0,/put your unique phrase here/ s//$APP_KEY/" $WP_CFG
     done
+    sed '/^.*DB_COLLATE.*$/r'<(
+        echo "define( 'FS_METHOD', 'direct' );"
+        echo "define( 'FTP_BASE', dirname( __FILE__ ) );"
+        echo "define( 'FTP_USER', '${SFTP_USER}' );"
+        echo "define( 'FTP_PASS', '${SFTP_PASS}' );"
+        echo "define( 'FTP_HOST', 'localhost' );"
+        echo "define( 'FTP_SSL', true );"
+    ) -i -- $WP_CFG
 else
-  log "contains files, skip"
+  log "wordpress already exist, skip"
 fi
 chown -R "${SFTP_USER}":sftp /var/www
 /usr/sbin/sshd

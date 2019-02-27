@@ -18,6 +18,8 @@ AllowAgentForwarding no
 AllowTcpForwarding no
 X11Forwarding no
 EOT
+
+
 TZ="Asia/Chongqing"
 ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone 
 
