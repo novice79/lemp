@@ -44,10 +44,11 @@ echo "${SFTP_USER}:${SFTP_PASS}" | chpasswd
 # if [ -z "$(ls /var/www)" ]
 if [ ! -d "/var/www/wordpress" ]
 then
-    log "empty www directory, create wordpress site"
+    log "has no yet wordpress site, create it"
     WP_CFG="/var/www/wordpress/wp-config.php"
     # cp -a /wordpress/. /var/www/
     cp -a /wordpress /var/www/
+    chmod -R g+w /var/www/wordpress
     sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
     sed -i "s/username_here/$MYSQL_USER/" $WP_CFG
     sed -i "s/password_here/$MYSQL_PASSWORD/" $WP_CFG

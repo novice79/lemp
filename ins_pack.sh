@@ -42,7 +42,7 @@ wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz
 rm -f *.{tar.gz}
 mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 # sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
-
+usermod -aG sftp nobody
 mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
