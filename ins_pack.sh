@@ -50,6 +50,12 @@ mkdir /var/www ; chmod g+w /var/www
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
 sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+# enable rewrite here
+ENABLE_REWRITE="enable 1 \n
+autoLoadHtaccess 1
+"
+ENABLE_REWRITE=`echo ${ENABLE_REWRITE} | tr '\n' "\\n"`
+sed -i -E "s/enable[[:space:]]+0/${ENABLE_REWRITE}/" /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 sed -i 's@html/@@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 sed -i 's@Example@wordpress@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 sed -i '/ajax\.googleapis\.com/d' /usr/local/lsws/admin/html.open/view/inc/header.php
