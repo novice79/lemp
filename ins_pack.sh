@@ -26,10 +26,12 @@ ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 echo "deb http://rpms.litespeedtech.com/debian/ stretch main" > /etc/apt/sources.list.d/lst_debian_repo.list
 wget -O /etc/apt/trusted.gpg.d/lst_debian_repo.gpg http://rpms.litespeedtech.com/debian/lst_debian_repo.gpg
 wget -O /etc/apt/trusted.gpg.d/lst_repo.gpg http://rpms.litespeedtech.com/debian/lst_repo.gpg
-
+# also need normal php?
+wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
+	&& echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
 # COPY --from=php:fpm /usr/local /usr/local
 
-apt-get update && apt-get install -y nfs-common unzip \
+apt-get update && apt-get install -y php7.3 letsencrypt unzip \
 	openlitespeed lsphp73* \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 	; rm -rf /var/lib/apt/lists/* \
