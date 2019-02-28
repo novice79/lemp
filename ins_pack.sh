@@ -27,16 +27,17 @@ echo "deb http://rpms.litespeedtech.com/debian/ stretch main" > /etc/apt/sources
 wget -O /etc/apt/trusted.gpg.d/lst_debian_repo.gpg http://rpms.litespeedtech.com/debian/lst_debian_repo.gpg
 wget -O /etc/apt/trusted.gpg.d/lst_repo.gpg http://rpms.litespeedtech.com/debian/lst_repo.gpg
 # also need normal php?
-wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
-	&& echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
+# wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
+# 	&& echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
 # COPY --from=php:fpm /usr/local /usr/local
-
-apt-get update && apt-get install -y php7.3 letsencrypt unzip \
-	openlitespeed lsphp73* \
+PACKS=" letsencrypt unzip openlitespeed lsphp73* "
+# PACKS+="php7.3" 
+apt-get update && apt-get install -y "${PACKS}" \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-	; rm -rf /var/lib/apt/lists/* \
-	; curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
-	&& chmod +x /usr/local/bin/composer
+	; rm -rf /var/lib/apt/lists/* 
+	
+# curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
+# 	&& chmod +x /usr/local/bin/composer
 
 cd / 
 wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
