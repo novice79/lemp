@@ -25,7 +25,10 @@ GRANT REPLICATION SLAVE ON *.* TO 'slaveuser'@'%';
 CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
 FLUSH PRIVILEGES;
 EOT
-cd /usr/local/lsws/admin/misc
+
+WORDPRESSPATH="/var/www/wordpress"
+SERVER_ROOT="/usr/local/lsws"
+cd "$SERVER_ROOT/admin/misc"
 log "LS_USER=${LS_USER:=david}"
 log "LS_PASS=${LS_PASS:=freego}"
 CUR_DIR=`pwd`
@@ -42,10 +45,10 @@ echo "${SFTP_USER}:${SFTP_PASS}" | chpasswd
 
 # ignore hidden files
 # if [ -z "$(ls /var/www)" ]
-if [ ! -d "/var/www/wordpress" ]
+if [ ! -d "$WORDPRESSPATH" ]
 then
     log "has no yet wordpress site, create it"
-    WP_CFG="/var/www/wordpress/wp-config.php"
+    WP_CFG="$WORDPRESSPATH/wp-config.php"
     # cp -a /wordpress/. /var/www/
     cp -a /wordpress /var/www/
     sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
@@ -68,10 +71,10 @@ else
 fi
 chown -R "${SFTP_USER}":sftp /var/www
 usermod -aG sftp nobody
-chmod -R g+w /var/www/wordpress
+chmod -R g+w $WORDPRESSPATH
 /usr/sbin/sshd
 /usr/sbin/mysqld --init-file="${sql_init_file}" --user=root --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=true --log-slave-updates &
-/usr/local/lsws/bin/lshttpd
+"$SERVER_ROOT/bin/lshttpd"
 # no pgrep && ps
 while [ 1 ]
 do
