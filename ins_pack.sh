@@ -26,13 +26,15 @@ ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 echo "deb http://rpms.litespeedtech.com/debian/ stretch main" > /etc/apt/sources.list.d/lst_debian_repo.list
 wget -O /etc/apt/trusted.gpg.d/lst_debian_repo.gpg http://rpms.litespeedtech.com/debian/lst_debian_repo.gpg
 wget -O /etc/apt/trusted.gpg.d/lst_repo.gpg http://rpms.litespeedtech.com/debian/lst_repo.gpg
+
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
 # also need normal php?
 # wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
 # 	&& echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
 
-PACKS=" letsencrypt unzip openlitespeed lsphp73* "
+PACKS=" letsencrypt unzip openlitespeed lsphp73* nodejs "
 # PACKS+="php7.3" 
-apt-get update && apt-get install -y "${PACKS}" \
+apt-get update && apt-get install -y ${PACKS} \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 	; rm -rf /var/lib/apt/lists/* 
 	
