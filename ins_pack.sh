@@ -55,12 +55,12 @@ mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 ln -s /usr/local/lsws/fcgi-bin/lsphp5 /usr/local/bin/php
 mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
-# enable mysql cache
-cat <<EOT >> /etc/mysql/conf.d/docker.cnf
-query_cache_type = 1
-query_cache_size = 128MB
-query_cache_limit = 1MB
-EOT
+# mysql8 not support query cache
+# cat <<EOT >> /etc/mysql/conf.d/docker.cnf
+# query_cache_type = 1
+# query_cache_size = 128MB
+# query_cache_limit = 1MB
+# EOT
 
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
 sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf

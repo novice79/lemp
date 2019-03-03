@@ -47,7 +47,7 @@ and change generated code in "php_src" to startup
 
 ## novice/lemp:wp (OpenLiteSpeed1.4.44 + Php7.3.2 + Mysql8.0.15 with wordpress  )
 Usage:  
-docker run -p 80:80 -p 443:443 -p 7080:7080 -p 3060:3060  -p 33060:33060 -d \
+docker run -p 80:80 -p 443:443 -p 7080:7080 -p 3306:3306  -p 33060:33060 -d \
     -v /data/php_src:/var/www \
     -v mysql:/var/lib/mysql  \
     -v lsconf:/usr/local/lsws/conf \
@@ -73,7 +73,7 @@ In a workspace dir
 
 and then run:
 
-    docker run -p 10080:8088 -p 7080:7080 -p 3060:3060 -d \
+    docker run -p 10080:8088 -p 7080:7080 -p 3306:3306 -d \
     -v $PWD/php_src:/usr/local/lsws/Example/html \
     -v $PWD/mysql:/var/lib/mysql  \
     -v lsconf:/usr/local/lsws/conf \
