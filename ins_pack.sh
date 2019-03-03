@@ -27,13 +27,14 @@ echo "deb http://rpms.litespeedtech.com/debian/ stretch main" > /etc/apt/sources
 wget -O /etc/apt/trusted.gpg.d/lst_debian_repo.gpg http://rpms.litespeedtech.com/debian/lst_debian_repo.gpg
 wget -O /etc/apt/trusted.gpg.d/lst_repo.gpg http://rpms.litespeedtech.com/debian/lst_repo.gpg
 
-curl -sL https://deb.nodesource.com/setup_11.x | bash -
+# curl -sL https://deb.nodesource.com/setup_11.x | bash -
 # also need normal php?
 # wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
 # 	&& echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
 
-PACKS=" letsencrypt unzip openlitespeed lsphp73* nodejs "
-# PACKS+="php7.3" 
+PACKS=" letsencrypt unzip openlitespeed lsphp73* "
+# PACKS+="nodejs " 
+# PACKS+="php7.3 " 
 apt-get update && apt-get install -y ${PACKS} \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 	; rm -rf /var/lib/apt/lists/* 
@@ -54,6 +55,13 @@ mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 ln -s /usr/local/lsws/fcgi-bin/lsphp5 /usr/local/bin/php
 mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
+# enable mysql cache
+cat <<EOT >> /etc/mysql/conf.d/docker.cnf
+query_cache_type = 1
+query_cache_size = 128MB
+query_cache_limit = 1MB
+EOT
+
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
 sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 # enable rewrite here
