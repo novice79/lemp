@@ -50,7 +50,9 @@ then
     log "has no yet wordpress site, create it"
     WP_CFG="$WORDPRESSPATH/wp-config.php"
     # cp -a /wordpress/. /var/www/
-    cp -a /wordpress /var/www/
+    # cp -a /wordpress /var/www/
+    mv /wordpress /var/www/
+    sed -i '0,/^RewriteCond.*/s/^RewriteCond.*/RewriteCond %{REQUEST_URI} !\/.well-known\n&/' "$WORDPRESSPATH/.htaccess"
     sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
     sed -i "s/username_here/$MYSQL_USER/" $WP_CFG
     sed -i "s/password_here/$MYSQL_PASSWORD/" $WP_CFG

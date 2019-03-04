@@ -44,7 +44,7 @@ apt-get update && apt-get install -y ${PACKS} \
 
 cd / 
 wget https://wordpress.org/latest.tar.gz && tar zxf latest.tar.gz 
-# mkdir -p /wordpress/wp-content/languages
+mkdir -p /wordpress/logs
 # wget https://downloads.wordpress.org/translation/core/5.0.3/zh_CN.zip && unzip zh_CN.zip -d /wordpress/wp-content/languages
 wget https://downloads.wordpress.org/plugin/litespeed-cache.2.9.4.1.zip && unzip litespeed*.zip -d /wordpress/wp-content/plugins
 # curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x /usr/local/bin/wp
@@ -63,15 +63,17 @@ sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/
 # EOT
 
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
-sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
-# enable rewrite here
-ENABLE_REWRITE="enable 1 \n
-autoLoadHtaccess 1
-"
-ENABLE_REWRITE=`echo ${ENABLE_REWRITE} | tr '\n' "\\n"`
-sed -i -E "s/enable[[:space:]]+0/${ENABLE_REWRITE}/" /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
-sed -i 's@html/@@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
-sed -i 's@Example@wordpress@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+mkdir -p /usr/local/lsws/ssl-proof/.well-known 
+chown -R nobody:nogroup /usr/local/lsws/ssl-proof
+# sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+# # enable rewrite here
+# ENABLE_REWRITE="enable 1 \n
+# autoLoadHtaccess 1
+# "
+# ENABLE_REWRITE=`echo ${ENABLE_REWRITE} | tr '\n' "\\n"`
+# sed -i -E "s/enable[[:space:]]+0/${ENABLE_REWRITE}/" /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+# sed -i 's@html/@@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
+# sed -i 's@Example@wordpress@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 sed -i '/ajax\.googleapis\.com/d' /usr/local/lsws/admin/html.open/view/inc/header.php
 rm -rf /usr/local/lsws/Example
 
