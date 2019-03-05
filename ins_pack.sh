@@ -2,7 +2,7 @@
 DEBIAN_FRONTEND=noninteractive
 sed -i -E "s/^exit [0-9]+$/exit 0/" /usr/sbin/policy-rc.d
 apt-get update && apt-get install -y tzdata curl wget procps net-tools \
-	ca-certificates apt-transport-https openssh-server
+	ca-certificates apt-transport-https openssh-server sudo
 
 sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 mkdir -p /var/run/sshd

@@ -26,6 +26,8 @@ jQuery(function ($) {
             $.notify( resp.msg, {type:"info", align:"center", verticalAlign:"middle"});
         }).fail(err => {
             console.log("failed: ", err);
+            log(JSON.stringify(err));
+            $.notify( JSON.stringify(err), {type:"info", align:"center", verticalAlign:"middle"});
         });
         
     })
@@ -39,13 +41,15 @@ jQuery(function ($) {
         if( !is_valid_domain(dn) ){
             return $.notify( '域名格式非法', {type:"info", align:"center", verticalAlign:"middle"});
         }
+        $("#apply").attr("disabled", true);
+        $.notify( "申请SSL证书中，请稍等……", {delay:0, type:"info", align:"center", verticalAlign:"middle"});
         $.ajax({
             type: "POST",
             url: wpObj.apply_url,
             beforeSend: function ( xhr ) {
                 xhr.setRequestHeader( 'X-WP-Nonce', wpObj.nonce );
             },
-            timeout: 3000,
+            // timeout: 3000,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
                 'domain': dn,
@@ -56,8 +60,12 @@ jQuery(function ($) {
             console.log("success", resp);
             $.notify( resp.msg, {type:"info", align:"center", verticalAlign:"middle"});
             log(resp.msg);
+            $("#apply").removeAttr("disabled");
         }).fail(err => {
             console.log("failed: ", err);
+            log(JSON.stringify(err));
+            $.notify( JSON.stringify(err), {type:"info", align:"center", verticalAlign:"middle"});
+            $("#apply").removeAttr("disabled");
         });
     })
 }.bind(null, jQuery) );

@@ -54,6 +54,7 @@ function apply( $req ) {
     log_it("apply,cmd=$cmd");
     exec("$cmd 2>&1", $output, $return);
     $output = array_slice($output, -15);
+    log_it("apply,return=$output");
     // file_put_contents(dirname( __FILE__ )."/aaa.html", $aaa);
     return [
         'ret' => $return,
@@ -62,10 +63,13 @@ function apply( $req ) {
 }
 function renew( $req ) {    
     $para = $req->get_json_params();
-    exec("letsencrypt renew 2>&1", $output, $return);
+    $cmd = "letsencrypt renew \
+    --work-dir /usr/local/lsws/ssl-proof/ \
+    --logs-dir /usr/local/lsws/ssl-proof/";
+    exec("$cmd 2>&1", $output, $return);
+    $output = array_slice($output, -15);
     $output = implode("\n", $output);
     log_it("renew,output=$output");
-    $output = array_slice($output, -15);
     return [
         'ret' => $return,
         'msg' => $output
