@@ -1,10 +1,10 @@
 #letsencrypt{
     box-sizing: border-box;
     /* border: solid 1px ; */
-    min-height: 87vh;
+    min-height: 85vh;
 }
 .content{
-    min-height: 79vh;
+    min-height: 70vh;
 }
 .apply-new{
     border: dashed 1px plum;
@@ -22,4 +22,14 @@
     /* background-color: darkgrey; */
     max-height: 25vh;
     overflow: auto;
+}
+.existing-ssl {
+    /* background-color: lemonchiffon; */
+    border: 2px inset #0099dd;
+    margin: 2em 0em;
+    border-top: 1em solid #0099dd
+}
+
+.legend {
+    color: #0099dd;
 }

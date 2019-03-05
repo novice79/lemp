@@ -22,8 +22,9 @@ jQuery(function ($) {
             dataType: "json"
         }).done(resp => {
             console.log("success", resp);
-            log(resp.msg);
-            $.notify( resp.msg, {type:"info", align:"center", verticalAlign:"middle"});
+            const msg = resp.msg.replace(/\n/g, '<br>');
+            log(msg);
+            $.notify( msg, {type:"info", align:"center", verticalAlign:"middle"});
         }).fail(err => {
             console.log("failed: ", err);
             log(JSON.stringify(err));
@@ -58,8 +59,9 @@ jQuery(function ($) {
             dataType: "json"
         }).done(resp => {
             console.log("success", resp);
-            $.notify( resp.msg, {type:"info", align:"center", verticalAlign:"middle"});
-            log(resp.msg);
+            const msg = resp.msg.replace(/\n/g, '<br>');
+            $.notify( msg, {type:"info", align:"center", verticalAlign:"middle"});
+            log(msg);
             $("#apply").removeAttr("disabled");
         }).fail(err => {
             console.log("failed: ", err);

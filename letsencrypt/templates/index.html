@@ -5,13 +5,14 @@
             <input id="email" type="email" placeholder="expire notification email address" size="30">
             <button id='apply'>{{apply_ssl}}</button>
         </div>
-        <div class="existing-ssl">
+        <fieldset class="existing-ssl">
+            <legend class="legend">已申请证书的域名：</legend>
             <ul>
                 {% for cert in certs %}
                     <li>{{ cert }}</li>
                 {% endfor %}
             </ul>
-        </div>
+        </fieldset>
         <button id='renew'>{{renew_ssl}}</button>
         <div class="readme">
             <p>{{readme}}</p>
