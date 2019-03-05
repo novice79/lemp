@@ -1,0 +1,25 @@
+#letsencrypt{
+    box-sizing: border-box;
+    /* border: solid 1px ; */
+    min-height: 87vh;
+}
+.content{
+    min-height: 79vh;
+}
+.apply-new{
+    border: dashed 1px plum;
+    display: flex;
+}
+.apply-new > *{
+    margin: .5em;
+}
+#apply{
+    margin-left: auto;
+}
+.logs{
+    padding: .9rem 5rem;
+    text-align: left;
+    /* background-color: darkgrey; */
+    max-height: 25vh;
+    overflow: auto;
+}

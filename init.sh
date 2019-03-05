@@ -71,6 +71,7 @@ then
 else
   log "wordpress already exist, skip"
 fi
+chown -R nobody:nogroup /etc/letsencrypt
 chown -R "${SFTP_USER}":sftp /var/www
 usermod -aG sftp nobody
 chmod -R g+w $WORDPRESSPATH

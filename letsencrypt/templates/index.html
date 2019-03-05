@@ -1,0 +1,23 @@
+<div id="letsencrypt" class="wrap">
+    <div class="content">
+        <div class="apply-new">
+            <input id="domain" placeholder="domain name">
+            <input id="email" type="email" placeholder="expire notification email address" size="30">
+            <button id='apply'>{{apply_ssl}}</button>
+        </div>
+        <div class="existing-ssl">
+            <ul>
+                {% for cert in certs %}
+                    <li>{{ cert }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <button id='renew'>{{renew_ssl}}</button>
+        <div class="readme">
+            <p>{{readme}}</p>
+        </div>
+    </div>
+    
+    <div class="logs"></div>
+</div>
+        
