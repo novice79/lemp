@@ -52,6 +52,8 @@ rm -f *.{tar.gz,zip}
 mv /wordpress/wp-config-sample.php /wordpress/wp-config.php
 
 # sed "/DB_COLLATE/a define('WPLANG', 'zh_CN');" -i /wordpress/wp-config.php
+sed "/DB_COLLATE/a define( 'WP_ALLOW_MULTISITE', true );" -i /wordpress/wp-config.php
+
 ln -s /usr/local/lsws/fcgi-bin/lsphp5 /usr/local/bin/php
 mkdir /var/www ; chmod g+w /var/www 
 sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/mysql/conf.d/docker.cnf
