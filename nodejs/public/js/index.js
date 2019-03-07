@@ -1,8 +1,9 @@
 
-let ws;
+let ws, connected;
 const ws_url = "ws://" + window.location.host + location.pathname + '/ws';
-+function init() {
++function init_sock() {
     console.log(`ws_url=${ws_url}`);
+   
     ws = new WebSocket(ws_url);
     ws.onmessage = on_message;
     ws.onclose = on_close;
@@ -10,6 +11,9 @@ const ws_url = "ws://" + window.location.host + location.pathname + '/ws';
     ws.onopen = on_open;
 }();
 function send(data) {
+    if (!connected) {
+        return setTimeout(send, 1000, data);
+    }
     ws.send(JSON.stringify(data));
 }
 function on_message(evt) {
@@ -20,10 +24,12 @@ function on_error(err) {
     console.log('onerror', err)
 }
 function on_close() {
-    init()
+    connected = false;
+    init_sock();
     console.log('onclose')
 }
 function on_open() {
+    connected = true;
     send({
         cmd: 'reg_cli_id',
         data: 'cli_id'
