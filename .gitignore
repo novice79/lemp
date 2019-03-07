@@ -31,4 +31,6 @@ t.js
 *.cpp
 *.txt
 *test*
-nodejs/
+app
+composer.phar
+/vendor/

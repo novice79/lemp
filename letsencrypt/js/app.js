@@ -70,5 +70,29 @@ jQuery(function ($) {
             $("#apply").removeAttr("disabled");
         });
     })
+    // to nodejs
+    $('#test').click(() => {
+        $.ajax({
+            type: "POST",
+            url: `http://${window.location.host}/nodejs/wp_admin`,
+            timeout: 3000,
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                data: 'from wp admin page',
+                token: wpObj.token
+            }),
+            dataType: "json"
+        }).done(resp => {
+            console.log("success", resp);
+            const msg = JSON.stringify(resp);
+            log(msg);
+            $.notify( msg, {type:"info", align:"center", verticalAlign:"middle"});
+        }).fail(err => {
+            console.log("failed: ", err);
+            log(JSON.stringify(err));
+            $.notify( JSON.stringify(err), {type:"info", align:"center", verticalAlign:"middle"});
+        });
+        
+    })
 }.bind(null, jQuery) );
 

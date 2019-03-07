@@ -2,7 +2,7 @@
 log () {
     printf "[%(%Y-%m-%d %T)T] %s\n" -1 "$*"
 }
-
+set -x
 chown -R mysql:mysql /var/lib/mysql
 if [ ! -e /var/lib/mysql/mysql ]; then
     rm -rf /var/lib/mysql/*
@@ -50,9 +50,10 @@ then
     log "has no yet wordpress site, create it"
     WP_CFG="$WORDPRESSPATH/wp-config.php"
     # cp -a /wordpress/. /var/www/
-    # cp -a /wordpress /var/www/
-    mv /wordpress /var/www/
-    sed -i '0,/^RewriteCond.*/s/^RewriteCond.*/RewriteCond %{REQUEST_URI} !\/.well-known\n&/' "$WORDPRESSPATH/.htaccess"
+    cp -a /wordpress /var/www/
+    # move very slow
+    # mv /wordpress /var/www/
+    # sed -i '0,/^RewriteCond.*/s/^RewriteCond.*/RewriteCond %{REQUEST_URI} !\/.well-known\n&/' "$WORDPRESSPATH/.htaccess"
     sed -i "s/database_name_here/$MYSQL_DATABASE/" $WP_CFG
     sed -i "s/username_here/$MYSQL_USER/" $WP_CFG
     sed -i "s/password_here/$MYSQL_PASSWORD/" $WP_CFG
@@ -78,15 +79,18 @@ chmod -R g+w $WORDPRESSPATH
 /usr/sbin/sshd
 /usr/sbin/mysqld --init-file="${sql_init_file}" --user=root --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=true --log-slave-updates &
 "$SERVER_ROOT/bin/lshttpd"
+
+export MYSQL_DATABASE MYSQL_USER MYSQL_PASSWORD
+/app
 # no pgrep && ps
-while [ 1 ]
-do
-    sleep 2
-    SERVICE="mysqld"
-    if ! pidof "$SERVICE" >/dev/null
-    then
-        echo "$SERVICE stopped. restart it"
-        /usr/sbin/mysqld --init-file="${sql_init_file}" --user=root --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=true --log-slave-updates &
-        # send mail ?
-    fi
-done
+# while [ 1 ]
+# do
+#     sleep 2
+#     SERVICE="mysqld"
+#     if ! pidof "$SERVICE" >/dev/null
+#     then
+#         echo "$SERVICE stopped. restart it"
+#         /usr/sbin/mysqld --init-file="${sql_init_file}" --user=root --server-id=1 --log-bin=mysql-bin --gtid-mode=ON --enforce-gtid-consistency=true --log-slave-updates &
+#         # send mail ?
+#     fi
+# done

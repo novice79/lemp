@@ -1,0 +1,26 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "nodejs service for wordpress",
+  "main": "app.js",
+  "repository": "https://github.com/novice79/lemp.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mysql": "^2.16.0",
+    "ws": "^6.2.0"
+  },
+  "bin": "app.js",
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ]
+  }
+}
