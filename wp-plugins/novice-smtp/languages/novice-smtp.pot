@@ -1,0 +1,490 @@
+#: novice-smtp-admin-menu.php:28
+msgid "Are you sure want to clear log?"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:29
+msgid "Log cleared."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:30
+msgid "Error occurred:"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:31
+msgid "Sending..."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:32
+msgid "Are you sure you want to delete ALL your settings and deactive plugin?"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:33
+msgid "All settings have been deleted and plugin is deactivated."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:42
+msgid "Easy WP SMTP"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:96
+msgid ""
+"PHP OpenSSL extension is not installed on the server. It's required by Easy "
+"WP SMTP plugin to operate properly. Please contact your server administrator "
+"or hosting provider and ask them to install it."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:99
+msgid ""
+"PHP OpenSSL extension is not installed on the server. It is required for "
+"encryption to work properly. Please contact your server administrator or "
+"hosting provider and ask them to install it."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:106
+#, php-format
+msgid ""
+"Your PHP version is %s, encryption function requires PHP version 5.3.0 or "
+"higher."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:111
+msgid "Easy WP SMTP Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:126
+msgid "Nonce check failed."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:136
+msgid "Please enter a valid email address in the 'FROM' field."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:181
+msgid "Please enter a valid port in the 'SMTP Port' field."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:190
+msgid "Settings saved."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:192
+msgid "Settings are not saved."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:204
+msgid "Please enter a valid email address in the recipient email field."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:230
+msgid "SMTP Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:231
+msgid "Additional Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:232 novice-smtp-admin-menu.php:435
+msgid "Test Email"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:244
+msgid "SMTP Configuration Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:247
+msgid ""
+"You can request your hosting provider for the SMTP details of your site. Use "
+"the SMTP details provided by your hosting provider to configure the "
+"following settings."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:251
+msgid "From Email Address"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:254
+msgid "This email address will be used in the 'From' field."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:258
+msgid "From Name"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:261
+msgid "This text will be used in the 'FROM' field"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:263
+msgid "Force From Name Replacement"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:265
+msgid ""
+"When enabled, the plugin will set the above From Name for each email. "
+"Disable it if you're using contact form plugins, it will prevent the plugin "
+"from replacing form submitter's name when contact email is sent."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:267
+msgid ""
+"If email's From Name is empty, the plugin will set the above value "
+"regardless."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:272
+msgid "Reply-To Email Address"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:275
+msgid ""
+"Optional. This email address will be used in the 'Reply-To' field of the "
+"email. Leave it blank to use 'From' email as the reply-to value."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:279
+msgid "SMTP Host"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:282
+msgid "Your mail server"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:286
+msgid "Type of Encryption"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:288
+msgid "None"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:289
+msgid "SSL/TLS"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:290
+msgid "STARTTLS"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:291
+msgid "For most servers SSL/TLS is the recommended option"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:295
+msgid "SMTP Port"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:298
+msgid "The port to your mail server"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:302
+msgid "SMTP Authentication"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:304
+msgid "No"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:305
+msgid "Yes"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:306
+msgid "This options should always be checked 'Yes'"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:310
+msgid "SMTP Username"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:313
+msgid "The username to login to your mail server"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:317
+msgid "SMTP Password"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:320
+msgid "The password to login to your mail server"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:321 novice-smtp-admin-menu.php:437
+#: novice-smtp-admin-menu.php:487
+msgctxt "\"Note\" as in \"Note: keep this in mind\""
+msgid "Note:"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:321
+msgid ""
+"when you click \"Save Changes\", your actual password is stored in the "
+"database and then used to send emails. This field is replaced with a gag "
+"(#easywpsmtpgagpass#). This is done to prevent someone with the access to "
+"Settings page from seeing your password (using password fields unmasking "
+"programs, for example)."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:326 novice-smtp-admin-menu.php:388
+msgid "Save Changes"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:336
+msgid "Additional Settings (Optional)"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:340
+msgid "Don't Replace \"From\" Field"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:343
+msgid ""
+"Comma separated emails list. Example value: email1@domain.com, email2@domain."
+"com"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:344
+msgid ""
+"This option is useful when you are using several email aliases on your SMTP "
+"server. If you don't want your aliases to be replaced by the address "
+"specified in \"From\" field, enter them in this field."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:348
+msgid "Enable Domain Check"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:351
+msgid ""
+"This option is usually used by developers only. SMTP settings will be used "
+"only if the site is running on following domain(s):"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:353
+msgid "Coma-separated domains list. Example: domain1.com, domain2.com"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:355
+msgid "Block all emails"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:357
+msgid ""
+"When enabled, plugin attempts to block ALL emails from being sent out if "
+"domain mismtach."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:361
+msgid "Encrypt Password"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:365
+msgid ""
+"When enabled, your SMTP password is stored in the database using AES-256 "
+"encryption."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:372
+msgid "Allow Insecure SSL Certificates"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:375
+msgid ""
+"Allows insecure and self-signed SSL certificates on SMTP server. It's highly "
+"recommended to keep this option disabled."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:379
+msgid "Enable Debug Log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:382
+msgid "Check this box to enable mail debug log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:383
+msgid "Clear Log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:383
+msgid "View Log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:395
+msgid "Danger Zone"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:397
+msgid ""
+"Actions in this section can (and some of them will) erase or mess up your "
+"settings. Use it with caution."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:400
+msgid "Export\\Import Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:402
+msgid "Export Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:403
+msgid "Use this to export plugin settings to a file."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:405
+msgid "Import Settings"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:406
+msgid ""
+"Use this to import plugin settings from a file. Note this would replace all "
+"your existing settings, so use with caution."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:410
+msgid "Delete Settings and Deactivate Plugin"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:412
+msgid "Self-destruct"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:413
+msgid ""
+"This will remove ALL your settings and deactivate the plugin. Useful when "
+"you're uninstalling the plugin and want to completely remove all crucial "
+"data stored in the database."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:414
+msgid "Warning! This can't be undone."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:437
+msgid ""
+"You have unsaved settings. In order to send a test email, you need to go "
+"back to previous tab and click \"Save Changes\" button first."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:443
+msgid "Following error occurred when attempting to send test email:"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:446
+msgid ""
+"Test email was successfully sent. No errors occurred during the process."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:457 novice-smtp-admin-menu.php:465
+msgid "Show Debug Log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:467
+msgid "Hide Debug Log"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:486
+msgid ""
+"You can use this section to send an email from your server using the above "
+"configured SMTP details to see if the email gets delivered."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:487
+msgid ""
+"debug log for this test email will be automatically displayed right after "
+"you send it. Test email also ignores \"Enable Domain Check\" option."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:492
+msgid "To"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:495
+msgid "Enter the recipient's email address"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:499
+msgid "Subject"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:502
+msgid "Enter a subject for your message"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:506
+msgid "Message"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:509
+msgid "Write your email message"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:514
+msgid "Send Test Email"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:527
+msgid "Documentation"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:529
+#, php-format
+msgctxt ""
+"%s is replaced by <a target=\"_blank\" href=\"https://wp-ecommerce.net/easy-"
+"wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-"
+"server-2197\">Easy WP SMTP</a>"
+msgid ""
+"Please visit the %s plugin's documentation page to learn how to use this "
+"plugin."
+msgstr ""
+
+#: novice-smtp-admin-menu.php:533
+msgid "Support"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:535
+#, php-format
+msgctxt "%s is replaced by \"Support Forum\" link"
+msgid "Having issues or difficulties? You can post your issue on the %s"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:535
+msgid "Support Forum"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:539
+msgid "Rate Us"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:541
+#, php-format
+msgctxt "%s is replaced by \"rating\" link"
+msgid "Like the plugin? Please give us a %s"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:541
+msgid "rating"
+msgstr ""
+
+#: novice-smtp.php:303
+msgid "Error occurred during settings import"
+msgstr ""
+
+#: novice-smtp.php:343
+#, php-format
+msgid ""
+"Please configure your SMTP credentials in the <a href=\"%s\">settings menu</"
+"a> in order to send email using Easy WP SMTP plugin."
+msgstr ""
+
+#: novice-smtp.php:353
+msgid "Settings have been imported successfully."
+msgstr ""
+
+#: novice-smtp.php:385 novice-smtp.php:393
+msgid "Settings"
+msgstr ""
+
+#: novice-smtp.php:554
+msgid "Please refresh the page and try again."
+msgstr ""

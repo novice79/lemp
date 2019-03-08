@@ -1,6 +1,6 @@
 FROM novice/build:latest as my_build
 WORKDIR /workspace
-COPY letsencrypt /workspace/letsencrypt
+COPY wp-plugins/letsencrypt /workspace/letsencrypt
 COPY nodejs /workspace/nodejs
 COPY build_app.sh .
 RUN /workspace/build_app.sh
@@ -15,6 +15,7 @@ RUN /ins_pack.sh
 COPY httpd_config.conf /usr/local/lsws/conf/httpd_config.conf
 COPY vhconf.conf /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 
+COPY wp-plugins/novice-smtp /wordpress/wp-content/plugins/novice-smtp
 COPY --from=my_build /workspace/letsencrypt /wordpress/wp-content/plugins/letsencrypt
 COPY --from=my_build /workspace/app /app
 

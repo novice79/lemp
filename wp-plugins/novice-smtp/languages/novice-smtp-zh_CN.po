@@ -1,0 +1,490 @@
+#: novice-smtp-admin-menu.php:28
+msgid "Are you sure want to clear log?"
+msgstr "你确认清除日志吗？"
+
+#: novice-smtp-admin-menu.php:29
+msgid "Log cleared."
+msgstr "日志已清除"
+
+#: novice-smtp-admin-menu.php:30
+msgid "Error occurred:"
+msgstr "遇到问题"
+
+#: novice-smtp-admin-menu.php:31
+msgid "Sending..."
+msgstr "发送中……"
+
+#: novice-smtp-admin-menu.php:32
+msgid "Are you sure you want to delete ALL your settings and deactive plugin?"
+msgstr "你确定要停用此插件并删除所有配置数据？"
+
+#: novice-smtp-admin-menu.php:33
+msgid "All settings have been deleted and plugin is deactivated."
+msgstr "插件已停用，所有配置已删除"
+
+#: novice-smtp-admin-menu.php:42
+msgid "Easy WP SMTP"
+msgstr "简易stmp插件"
+
+#: novice-smtp-admin-menu.php:96
+msgid ""
+"PHP OpenSSL extension is not installed on the server. It's required by Easy "
+"WP SMTP plugin to operate properly. Please contact your server administrator "
+"or hosting provider and ask them to install it."
+msgstr "PHP OpenSSL 扩展未安装。请联系服务器管理安装。"
+
+#: novice-smtp-admin-menu.php:99
+msgid ""
+"PHP OpenSSL extension is not installed on the server. It is required for "
+"encryption to work properly. Please contact your server administrator or "
+"hosting provider and ask them to install it."
+msgstr "PHP OpenSSL 扩展未安装。请联系服务器管理安装。"
+
+#: novice-smtp-admin-menu.php:106
+#, php-format
+msgid ""
+"Your PHP version is %s, encryption function requires PHP version 5.3.0 or "
+"higher."
+msgstr "你的PHP版本是 %s, 加密程序要求PHP版本大于5.3.0"
+
+#: novice-smtp-admin-menu.php:111
+msgid "Easy WP SMTP Settings"
+msgstr "简易stmp设置"
+
+#: novice-smtp-admin-menu.php:126
+msgid "Nonce check failed."
+msgstr "nonce检验失败"
+
+#: novice-smtp-admin-menu.php:136
+msgid "Please enter a valid email address in the 'FROM' field."
+msgstr "请在'FROM'字段输入合法的邮件地址"
+
+#: novice-smtp-admin-menu.php:181
+msgid "Please enter a valid port in the 'SMTP Port' field."
+msgstr "请在'SMTP Port'字段输入合法的端口号"
+
+#: novice-smtp-admin-menu.php:190
+msgid "Settings saved."
+msgstr "配置已保存"
+
+#: novice-smtp-admin-menu.php:192
+msgid "Settings are not saved."
+msgstr "配置未保存"
+
+#: novice-smtp-admin-menu.php:204
+msgid "Please enter a valid email address in the recipient email field."
+msgstr "请在'接收人'字段输入合法的邮件地址"
+
+#: novice-smtp-admin-menu.php:230
+msgid "SMTP Settings"
+msgstr "SMTP 设置"
+
+#: novice-smtp-admin-menu.php:231
+msgid "Additional Settings"
+msgstr "更多设置"
+
+#: novice-smtp-admin-menu.php:232 novice-smtp-admin-menu.php:435
+msgid "Test Email"
+msgstr "测试邮件"
+
+#: novice-smtp-admin-menu.php:244
+msgid "SMTP Configuration Settings"
+msgstr "SMTP设置数据"
+
+#: novice-smtp-admin-menu.php:247
+msgid ""
+"You can request your hosting provider for the SMTP details of your site. Use "
+"the SMTP details provided by your hosting provider to configure the "
+"following settings."
+msgstr "你需要用邮件服务商提供的smtp配置数据填写以下内容"
+
+#: novice-smtp-admin-menu.php:251
+msgid "From Email Address"
+msgstr "发送人邮件地址"
+
+#: novice-smtp-admin-menu.php:254
+msgid "This email address will be used in the 'From' field."
+msgstr "这个邮箱地址将用于'发送人'"
+
+#: novice-smtp-admin-menu.php:258
+msgid "From Name"
+msgstr "发送人名称"
+
+#: novice-smtp-admin-menu.php:261
+msgid "This text will be used in the 'FROM' field"
+msgstr "这个文字内容将用于'发送人'字段"
+
+#: novice-smtp-admin-menu.php:263
+msgid "Force From Name Replacement"
+msgstr "强制名称替换"
+
+#: novice-smtp-admin-menu.php:265
+msgid ""
+"When enabled, the plugin will set the above From Name for each email. "
+"Disable it if you're using contact form plugins, it will prevent the plugin "
+"from replacing form submitter's name when contact email is sent."
+msgstr "启用时，插件将用以上内容设置每个邮件发件人名称。如果你想使用表单填写的内容作为发送人名称，你需要禁用它。"
+
+#: novice-smtp-admin-menu.php:267
+msgid ""
+"If email's From Name is empty, the plugin will set the above value "
+"regardless."
+msgstr "如果 '发送人'名称为空，此插件将使用以上内容"
+
+#: novice-smtp-admin-menu.php:272
+msgid "Reply-To Email Address"
+msgstr "回复地址"
+
+#: novice-smtp-admin-menu.php:275
+msgid ""
+"Optional. This email address will be used in the 'Reply-To' field of the "
+"email. Leave it blank to use 'From' email as the reply-to value."
+msgstr "可选项。如不填，将用 '发送人'地址作为回复地址 "
+
+#: novice-smtp-admin-menu.php:279
+msgid "SMTP Host"
+msgstr "SMTP服务器地址"
+
+#: novice-smtp-admin-menu.php:282
+msgid "Your mail server"
+msgstr "你的邮件服务器"
+
+#: novice-smtp-admin-menu.php:286
+msgid "Type of Encryption"
+msgstr "加密类型"
+
+#: novice-smtp-admin-menu.php:288
+msgid "None"
+msgstr "无"
+
+#: novice-smtp-admin-menu.php:289
+msgid "SSL/TLS"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:290
+msgid "STARTTLS"
+msgstr ""
+
+#: novice-smtp-admin-menu.php:291
+msgid "For most servers SSL/TLS is the recommended option"
+msgstr "对大多数服务器，推荐用SSL/TLS选项"
+
+#: novice-smtp-admin-menu.php:295
+msgid "SMTP Port"
+msgstr "SMTP端口"
+
+#: novice-smtp-admin-menu.php:298
+msgid "The port to your mail server"
+msgstr "你的邮件服务器端口"
+
+#: novice-smtp-admin-menu.php:302
+msgid "SMTP Authentication"
+msgstr "SMTP认证"
+
+#: novice-smtp-admin-menu.php:304
+msgid "No"
+msgstr "否"
+
+#: novice-smtp-admin-menu.php:305
+msgid "Yes"
+msgstr "是"
+
+#: novice-smtp-admin-menu.php:306
+msgid "This options should always be checked 'Yes'"
+msgstr "此选项应选 '是' "
+
+#: novice-smtp-admin-menu.php:310
+msgid "SMTP Username"
+msgstr "SMTP用户名"
+
+#: novice-smtp-admin-menu.php:313
+msgid "The username to login to your mail server"
+msgstr "用于登陆你邮件服务器的用户名"
+
+#: novice-smtp-admin-menu.php:317
+msgid "SMTP Password"
+msgstr "SMTP密码"
+
+#: novice-smtp-admin-menu.php:320
+msgid "The password to login to your mail server"
+msgstr "用于登陆你邮件服务器的密码"
+
+#: novice-smtp-admin-menu.php:321 novice-smtp-admin-menu.php:437
+#: novice-smtp-admin-menu.php:487
+msgctxt "\"Note\" as in \"Note: keep this in mind\""
+msgid "Note:"
+msgstr "备注"
+
+#: novice-smtp-admin-menu.php:321
+msgid ""
+"when you click \"Save Changes\", your actual password is stored in the "
+"database and then used to send emails. This field is replaced with a gag "
+"(#easywpsmtpgagpass#). This is done to prevent someone with the access to "
+"Settings page from seeing your password (using password fields unmasking "
+"programs, for example)."
+msgstr "当你点击'保存修改'，你的实际密码将保存在数据库中用于以后发送邮件。此字段内容将显示伪造的数据，以防有人用工具偷窥该设置页面获取您的密码。"
+
+#: novice-smtp-admin-menu.php:326 novice-smtp-admin-menu.php:388
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: novice-smtp-admin-menu.php:336
+msgid "Additional Settings (Optional)"
+msgstr "更多设置（可选）"
+
+#: novice-smtp-admin-menu.php:340
+msgid "Don't Replace \"From\" Field"
+msgstr "请勿替换 'From'字段"
+
+#: novice-smtp-admin-menu.php:343
+msgid ""
+"Comma separated emails list. Example value: email1@domain.com, email2@domain."
+"com"
+msgstr "逗号分隔的邮件列表。例如：email1@domain.com, email2@domain, ..."
+
+#: novice-smtp-admin-menu.php:344
+msgid ""
+"This option is useful when you are using several email aliases on your SMTP "
+"server. If you don't want your aliases to be replaced by the address "
+"specified in \"From\" field, enter them in this field."
+msgstr "当你使用邮件服务器别名时，启用该选项，以防止程序用 '发送人'内容替换别名"
+
+#: novice-smtp-admin-menu.php:348
+msgid "Enable Domain Check"
+msgstr "启用域名检查"
+
+#: novice-smtp-admin-menu.php:351
+msgid ""
+"This option is usually used by developers only. SMTP settings will be used "
+"only if the site is running on following domain(s):"
+msgstr "开放者选项。SMTP设置将在运行于以下域名时被使用"
+
+#: novice-smtp-admin-menu.php:353
+msgid "Coma-separated domains list. Example: domain1.com, domain2.com"
+msgstr "逗号分隔的域名列表，如：domain1.com, domain2.com"
+
+#: novice-smtp-admin-menu.php:355
+msgid "Block all emails"
+msgstr "阻止所有邮件"
+
+#: novice-smtp-admin-menu.php:357
+msgid ""
+"When enabled, plugin attempts to block ALL emails from being sent out if "
+"domain mismtach."
+msgstr "启用时，如域名不匹配，插件将阻止所有邮件发出"
+
+#: novice-smtp-admin-menu.php:361
+msgid "Encrypt Password"
+msgstr "加密的密码"
+
+#: novice-smtp-admin-menu.php:365
+msgid ""
+"When enabled, your SMTP password is stored in the database using AES-256 "
+"encryption."
+msgstr "启用时，你的SMTP密码将用AES-256算法加密后存于数据库中"
+
+#: novice-smtp-admin-menu.php:372
+msgid "Allow Insecure SSL Certificates"
+msgstr "允许不安全的SSL证书"
+
+#: novice-smtp-admin-menu.php:375
+msgid ""
+"Allows insecure and self-signed SSL certificates on SMTP server. It's highly "
+"recommended to keep this option disabled."
+msgstr "允许SMTP服务器使用不安全或自生成的SSL证书。推荐不启用该选项"
+
+#: novice-smtp-admin-menu.php:379
+msgid "Enable Debug Log"
+msgstr "启用调试日志"
+
+#: novice-smtp-admin-menu.php:382
+msgid "Check this box to enable mail debug log"
+msgstr "勾选以启用邮件调试日志"
+
+#: novice-smtp-admin-menu.php:383
+msgid "Clear Log"
+msgstr "清除日志"
+
+#: novice-smtp-admin-menu.php:383
+msgid "View Log"
+msgstr "查看日志"
+
+#: novice-smtp-admin-menu.php:395
+msgid "Danger Zone"
+msgstr "危险区"
+
+#: novice-smtp-admin-menu.php:397
+msgid ""
+"Actions in this section can (and some of them will) erase or mess up your "
+"settings. Use it with caution."
+msgstr "小心，此区域的操作将（可能）删除或搞乱你的设置"
+
+#: novice-smtp-admin-menu.php:400
+msgid "Export\\Import Settings"
+msgstr "导入/导出 设置"
+
+#: novice-smtp-admin-menu.php:402
+msgid "Export Settings"
+msgstr "导出设置"
+
+#: novice-smtp-admin-menu.php:403
+msgid "Use this to export plugin settings to a file."
+msgstr "用这个导出插件设置到文件中"
+
+#: novice-smtp-admin-menu.php:405
+msgid "Import Settings"
+msgstr "导入设置"
+
+#: novice-smtp-admin-menu.php:406
+msgid ""
+"Use this to import plugin settings from a file. Note this would replace all "
+"your existing settings, so use with caution."
+msgstr "从文件中导入插件设置，它将替换所有当前设置数据。请谨慎操作。"
+
+#: novice-smtp-admin-menu.php:410
+msgid "Delete Settings and Deactivate Plugin"
+msgstr "删除设置，并停用插件"
+
+#: novice-smtp-admin-menu.php:412
+msgid "Self-destruct"
+msgstr "自毁"
+
+#: novice-smtp-admin-menu.php:413
+msgid ""
+"This will remove ALL your settings and deactivate the plugin. Useful when "
+"you're uninstalling the plugin and want to completely remove all crucial "
+"data stored in the database."
+msgstr "它将删除所有设置数据并停用插件。当你打算删除插件并清空所有数据库中内容时 使用"
+
+#: novice-smtp-admin-menu.php:414
+msgid "Warning! This can't be undone."
+msgstr "警告！此操作不可撤销。"
+
+#: novice-smtp-admin-menu.php:437
+msgid ""
+"You have unsaved settings. In order to send a test email, you need to go "
+"back to previous tab and click \"Save Changes\" button first."
+msgstr "设置未保存。你需要回到前个设置页面点 '保存修改'按钮，再回来发送测试邮件。"
+
+#: novice-smtp-admin-menu.php:443
+msgid "Following error occurred when attempting to send test email:"
+msgstr "发送测试邮件时，遇到以下错误。"
+
+#: novice-smtp-admin-menu.php:446
+msgid ""
+"Test email was successfully sent. No errors occurred during the process."
+msgstr "测试邮件发送成功，无任何错误"
+
+#: novice-smtp-admin-menu.php:457 novice-smtp-admin-menu.php:465
+msgid "Show Debug Log"
+msgstr "显示调试日志"
+
+#: novice-smtp-admin-menu.php:467
+msgid "Hide Debug Log"
+msgstr "隐藏调试日志"
+
+#: novice-smtp-admin-menu.php:486
+msgid ""
+"You can use this section to send an email from your server using the above "
+"configured SMTP details to see if the email gets delivered."
+msgstr "你可在此区域，使用以上SMTP配置数据从服务器发送邮件，以检测邮件能否发送成功"
+
+#: novice-smtp-admin-menu.php:487
+msgid ""
+"debug log for this test email will be automatically displayed right after "
+"you send it. Test email also ignores \"Enable Domain Check\" option."
+msgstr "发送测试邮件后，自动显示日志。发测试邮件时不检测 '域名检查'设置"
+
+#: novice-smtp-admin-menu.php:492
+msgid "To"
+msgstr "到"
+
+#: novice-smtp-admin-menu.php:495
+msgid "Enter the recipient's email address"
+msgstr "输入 '接收人'邮件地址"
+
+#: novice-smtp-admin-menu.php:499
+msgid "Subject"
+msgstr "标题"
+
+#: novice-smtp-admin-menu.php:502
+msgid "Enter a subject for your message"
+msgstr "输入邮件标题"
+
+#: novice-smtp-admin-menu.php:506
+msgid "Message"
+msgstr "内容"
+
+#: novice-smtp-admin-menu.php:509
+msgid "Write your email message"
+msgstr "输入邮件内容"
+
+#: novice-smtp-admin-menu.php:514
+msgid "Send Test Email"
+msgstr "发送测试邮件"
+
+#: novice-smtp-admin-menu.php:527
+msgid "Documentation"
+msgstr "文档"
+
+#: novice-smtp-admin-menu.php:529
+#, php-format
+msgctxt ""
+"%s is replaced by <a target=\"_blank\" href=\"https://wp-ecommerce.net/easy-"
+"wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-"
+"server-2197\">Easy WP SMTP</a>"
+msgid ""
+"Please visit the %s plugin's documentation page to learn how to use this "
+"plugin."
+msgstr "清查看 %s 插件文档， 以了解如何使用该插件"
+
+#: novice-smtp-admin-menu.php:533
+msgid "Support"
+msgstr "技术支持"
+
+#: novice-smtp-admin-menu.php:535
+#, php-format
+msgctxt "%s is replaced by \"Support Forum\" link"
+msgid "Having issues or difficulties? You can post your issue on the %s"
+msgstr "如遇到任何问题，请把 '问题'贴到 %s"
+
+#: novice-smtp-admin-menu.php:535
+msgid "Support Forum"
+msgstr "支持论坛"
+
+#: novice-smtp-admin-menu.php:539
+msgid "Rate Us"
+msgstr "评分"
+
+#: novice-smtp-admin-menu.php:541
+#, php-format
+msgctxt "%s is replaced by \"rating\" link"
+msgid "Like the plugin? Please give us a %s"
+msgstr "如您喜欢该插件，请给我打*"
+
+#: novice-smtp-admin-menu.php:541
+msgid "rating"
+msgstr "评分"
+
+#: novice-smtp.php:303
+msgid "Error occurred during settings import"
+msgstr "导入配置失败"
+
+#: novice-smtp.php:343
+#, php-format
+msgid ""
+"Please configure your SMTP credentials in the <a href=\"%s\">settings menu</"
+"a> in order to send email using Easy WP SMTP plugin."
+msgstr "请【在设置菜单】填写您的SMTP账号信息，以使用该插件"
+
+#: novice-smtp.php:353
+msgid "Settings have been imported successfully."
+msgstr "配置导入成功"
+
+#: novice-smtp.php:385 novice-smtp.php:393
+msgid "Settings"
+msgstr "设置"
+
+#: novice-smtp.php:554
+msgid "Please refresh the page and try again."
+msgstr "请刷新页面重试"

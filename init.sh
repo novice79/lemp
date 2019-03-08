@@ -2,7 +2,7 @@
 log () {
     printf "[%(%Y-%m-%d %T)T] %s\n" -1 "$*"
 }
-set -x
+# set -x
 chown -R mysql:mysql /var/lib/mysql
 if [ ! -e /var/lib/mysql/mysql ]; then
     rm -rf /var/lib/mysql/*
