@@ -61,7 +61,7 @@ EOT
 elif [ -f "/var/www/public/index.php" ]
 then
     log "set doc root dir=/var/www/public"
-    sed 's@root /var/www@root /var/www/public@g' -i /etc/nginx/conf.d/default.conf
+    sed 's@root /var/www;@root /var/www/public;@g' -i /etc/nginx/conf.d/default.conf
 else
     log "normal php www dir containing files, skip"
 fi
