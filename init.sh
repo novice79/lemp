@@ -28,9 +28,13 @@ then
 EOT
 elif [ -f "/var/www/public/index.php" ]
 then
-    sed 's@/var/www@/var/www/public@g' -i /etc/nginx/conf.d/default.conf
+    sed 's@/var/www;@/var/www/public;@g' -i /etc/nginx/conf.d/default.conf
 else
     echo "normal php www dir containing files, skip"
+fi
+
+if [ -f "/var/www/composer.json" ]; then
+    cd /var/www && composer install
 fi
 php-fpm -F &
 # pid_php=$!

@@ -18,7 +18,10 @@ RUN apt-get update && apt-get install -y nfs-common \
 	php7.3-opcache php7.3-pgsql php7.3-readline \
 	php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-xml php7.3-xmlrpc php7.3-zip php-redis php-igbinary php-mongodb \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-	; rm -rf /var/lib/apt/lists/* 
+	; rm -rf /var/lib/apt/lists/* \
+	; curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
+	&& chmod +x /usr/local/bin/composer \
+	&& composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 COPY conf/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
