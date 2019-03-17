@@ -3,7 +3,7 @@ FROM nginx:latest
 LABEL maintainer="David <david@cninone.com>"
 
 RUN apt-get update && apt-get install -y tzdata curl wget git unzip procps net-tools gnupg \
-	ca-certificates apt-transport-https 
+	ca-certificates apt-transport-https inetutils-ping telnet 
 ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone 
 
