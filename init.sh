@@ -32,10 +32,10 @@ then
 else
     echo "normal php www dir containing files, skip"
 fi
-
-if [ -f "/var/www/composer.json" ]; then
-    cd /var/www && composer install
-fi
+# too slow, so comment out
+# if [ -f "/var/www/composer.json" ]; then
+#     cd /var/www && composer install
+# fi
 php-fpm -F &
 # pid_php=$!
 nginx &

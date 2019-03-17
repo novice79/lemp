@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y nfs-common \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
 	; rm -rf /var/lib/apt/lists/* \
 	; curl -o /usr/local/bin/composer https://getcomposer.org/download/1.8.4/composer.phar \
-	&& chmod +x /usr/local/bin/composer \
-	&& composer config -g repo.packagist composer https://packagist.phpcomposer.com
+	&& chmod +x /usr/local/bin/composer 
+	# && composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 COPY conf/nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY conf/nginx/nginx.conf /etc/nginx/nginx.conf
