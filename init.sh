@@ -26,10 +26,10 @@ then
 </body> 
 </html> 
 EOT
-elif [ -f "/var/www/public/index.php" ] && grep -q "docker stock config" /etc/nginx/conf.d/default.conf
-then
-    echo "change doc dir to public ..."
-    sed 's@/var/www;@/var/www/public;@g' -i /etc/nginx/conf.d/default.conf
+# elif [ -f "/var/www/public/index.php" ] && grep -q "docker stock config" /etc/nginx/conf.d/default.conf
+# then
+#     echo "change doc dir to public ..."
+#     sed 's@/var/www;@/var/www/public;@g' -i /etc/nginx/conf.d/default.conf
 else
     echo "normal php www dir containing files, skip"
 fi
