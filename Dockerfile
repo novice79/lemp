@@ -2,7 +2,7 @@
 FROM nginx:latest
 LABEL maintainer="David <david@cninone.com>"
 
-RUN apt-get update && apt-get install -y tzdata curl wget procps net-tools gnupg \
+RUN apt-get update && apt-get install -y tzdata curl wget git unzip procps net-tools gnupg \
 	ca-certificates apt-transport-https 
 ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone 
