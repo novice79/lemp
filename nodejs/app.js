@@ -12,7 +12,7 @@ const wss = new WebSocket.Server({
     // path: "/ws" 
 });
 
-const port = 7000;
+const port = 1979;
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
