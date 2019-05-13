@@ -67,6 +67,8 @@ sed '/\[mysqld\]/a default_authentication_plugin=mysql_native_password' -i /etc/
 mv /usr/local/lsws/conf/vhosts/{Example,wordpress}
 mkdir -p /usr/local/lsws/ssl-proof/.well-known 
 chown -R nobody:nogroup /usr/local/lsws/ssl-proof
+sed -i -E "s/^upload_max_filesize.+$/upload_max_filesize = 30M/" /usr/local/lsws/lsphp73/etc/php/7.3/litespeed/php.ini
+sed -i -E "s/^post_max_size.+$/post_max_size = 30M/" /usr/local/lsws/lsphp73/etc/php/7.3/litespeed/php.ini
 # sed -i 's/index\.html/index\.html, index\.php/' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 # # enable rewrite here
 # ENABLE_REWRITE="enable 1 \n
