@@ -2,6 +2,10 @@
 log () {
     printf "[%(%Y-%m-%d %T)T] %s\n" -1 "$*"
 }
+if [ -z "$(ls /usr/local/lsws/conf)" ]
+then
+    cp -a /lsws_conf/. /usr/local/lsws/conf/
+fi
 # set -x
 chown -R mysql:mysql /var/lib/mysql
 if [ ! -e /var/lib/mysql/mysql ]; then

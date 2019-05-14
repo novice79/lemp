@@ -80,5 +80,6 @@ sed -i -E "s/^post_max_size.+$/post_max_size = 30M/" /usr/local/lsws/lsphp73/etc
 # sed -i 's@Example@wordpress@' /usr/local/lsws/conf/vhosts/wordpress/vhconf.conf
 sed -i '/ajax\.googleapis\.com/d' /usr/local/lsws/admin/html.open/view/inc/header.php
 rm -rf /usr/local/lsws/Example
-
+# cause kubernetes has no 'named volume', so backup ols config dir and copy it backup when mounted dir is empty
+mv /usr/local/lsws/conf /lsws_conf 
 rm -- "$0"
