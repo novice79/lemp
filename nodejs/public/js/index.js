@@ -1,6 +1,6 @@
 
 let ws, connected;
-const ws_url = `${location.protocol=="https:"?'wss':'ws'}//` + window.location.host + location.pathname + '/ws';
+const ws_url = `${location.protocol=="https:"?'wss':'ws'}://` + window.location.host + location.pathname + '/ws';
 +function init_sock() {
     console.log(`ws_url=${ws_url}`);
    
